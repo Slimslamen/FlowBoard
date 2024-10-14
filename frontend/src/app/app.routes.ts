@@ -1,6 +1,12 @@
-import { Routes } from '@angular/router'
-import { CreateAccountComponent } from './Components/login/create-account/create-account.component';
+import { Routes } from '@angular/router';
+import { BoardComponent } from './Components/board/board.component';
+import { CardComponent } from './Components/card/card.component';
 
 export const routes: Routes = [
-    { path: 'create-account', component: CreateAccountComponent}
+
+    {
+        path: 'Card',
+        component: CardComponent,
+        title:"Card page"
+    }
 ];
