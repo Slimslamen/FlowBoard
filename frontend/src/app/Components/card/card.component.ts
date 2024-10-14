@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ITasks } from './TasksModel';
 import { CommonModule } from '@angular/common';
+
+import { ITasks } from './TasksModel';
+import { ITaskArray } from './TaskarrayModel';
 
 
 @Component({
@@ -8,23 +10,35 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
 })
-
 export class CardComponent {
+  Tasks: ITasks[] = [
+    { id: 1, task: 'Clean' },
+    { id: 2, task: 'Shower' },
+  ];
 
-TasksArray: ITasks[][] = [
-  [
-    { id: 1, task: "Clean" },
-    { id: 2, task: "Shower" }
-  ],
-  [
-    { id: 1, task: "Eat" },
-    { id: 2, task: "Sleep" }
-  ],
-  [
-    { id: 1, task: "Train" },
-    { id: 2, task: "TV" }
-  ]
-];
+  TasksArray: ITaskArray[]= [
+    {
+      title: "Backlog",
+      tasks: this.Tasks
+    },
+    {
+      title: "To do",
+      tasks: this.Tasks
+    }
+    ,
+    {
+      title: "Ongoing",
+      tasks: this.Tasks
+    },
+    {
+      title: "Done",
+      tasks: this.Tasks
+    },
+    {
+      title: "Blocked",
+      tasks: this.Tasks
+    }
+  ];
 }

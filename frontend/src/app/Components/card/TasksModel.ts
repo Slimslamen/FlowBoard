@@ -1,5 +1,5 @@
-export interface ITasks{
-    id: number;
-    task: string;
-  }
+export interface ITasks {
+  id: number;
+  task: string;
+}
 

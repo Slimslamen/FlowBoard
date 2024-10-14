@@ -5,13 +5,10 @@
     class="w-72 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 flex flex-col"
   >
     <h5 class="mb-3 text-base font-bold text-gray-900 md:text-xl">
-      Connect wallet
+      {{Tasks.title}}
     </h5>
-    <p class="text-sm font-normal text-gray-500">
-      Connect with one of our available wallet providers or create a new one.
-    </p>
     <div>
-      <ul *ngFor="let item of Tasks" class="my-4 space-y-3 flex flex-col">
+      <ul *ngFor="let item of Tasks.tasks" class="my-4 space-y-3 flex flex-col">
         <li>
           <a
             href="#"
