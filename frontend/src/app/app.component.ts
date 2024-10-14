@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, BoardComponent, AdminComponent, UserComponent],
-  imports: [RouterOutlet, NavbarComponent, LoginComponent, BoardComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
