@@ -1,12 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+
+  ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css'] 
 })
-export class NavbarComponent {
+export class NavbarComponent  {
+  isDropdownOpen = false;
+  isHamburgerOpen = false;
+  constructor() {}
+
+
+  toggleHamburger = () => {
+    this.isHamburgerOpen = !this.isHamburgerOpen;
+    console.log(this.isHamburgerOpen); 
+  };
+  closeHamburger() {
+    this.isHamburgerOpen = false; 
+    this.isDropdownOpen = false;  
+  }
+
+  toggleDropDown = () => {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    console.log(this.isDropdownOpen); 
+  };
 
 }
+
