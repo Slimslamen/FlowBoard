@@ -2,12 +2,12 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/assets/FlowBoard.png" class="h-8" alt="FlowBoard Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowboard</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Flowboard</span>
       </a>
       <button 
       (click)="toggleHamburger()" 
       type="button" 
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" 
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" 
       aria-controls="navbar-dropdown" 
       [attr.aria-expanded]="isHamburgerOpen"
       [class.hidden]="isHamburgerOpen"> <!-- Hide button when menu is open -->
@@ -25,7 +25,7 @@
           <a (click)="closeHamburger()" routerLink="/contact" class="block py-2 px-3 rounded hover:text-seaGreen md:hover:bg-transparent md:border-0 md:p-0 text-white cursor-pointer">Contact</a>
         </li>
         <li class="relative">
-          <button (click)="toggleDropDown()" class="flex items-center justify-between w-full py-2 px-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-seaGreen md:p-0 md:w-auto dark:focus:text-white">Login
+          <button (click)="toggleDropDown()" class="flex items-center justify-between w-full py-2 px-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-seaGreen md:p-0 md:w-auto focus:text-white">Login
               <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
@@ -33,17 +33,17 @@
             <!-- Dropdown menu -->
              @if( isDropdownOpen)
              {
-                      <div class="-right-2 absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400">
+                      <div class="-right-2 absolute z-10 font-normal divide-y  rounded-lg shadow w-44 bg-gray-700 divide-gray-600">
+                <ul class="py-2 text-sm text-gray-400">
                     <li>
-                        <a (click)="closeHamburger()" routerLink="/admin" class=" cursor-pointer block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Admin-login</a>
+                        <a (click)="closeHamburger()" routerLink="/admin" class=" cursor-pointer block px-4 py-2 hover:bg-gray-600 hover:text-white">Admin-login</a>
                     </li>
                     <li>
-                        <a (click)="closeHamburger()" routerLink="/user" class="  cursor-pointer block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">User-login</a>
+                        <a (click)="closeHamburger()" routerLink="/user" class="  cursor-pointer block px-4 py-2  hover:bg-gray-600 hover:text-white">User-login</a>
                     </li>
                 </ul>
                 <div class="py-1">
-                    <a (click)="closeHamburger()" routerLink="/logout" class=" cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                    <a (click)="closeHamburger()" routerLink="/logout" class=" cursor-pointer block px-4 py-2 text-sm  hover:bg-gray-600 text-gray-200 hover:text-white">Sign out</a>
                 </div>
             </div>
       
