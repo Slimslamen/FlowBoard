@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj": {}
+    "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj": {
+    "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\estel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\obj\\",
+        "projectPath": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\marta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\estel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\marta\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
