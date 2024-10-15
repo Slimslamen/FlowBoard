@@ -10,6 +10,7 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = backend
 build_property.RootNamespace = backend
 build_property.ProjectDir = C:\Users\marta\OneDrive\Skrivbord\flowboard\flowboard\backend\
+build_property.ProjectDir = C:\Users\jimmo\OneDrive\Desktop\Ecutbildning\Projekt\flowboard\backend\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0

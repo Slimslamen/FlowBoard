@@ -482,24 +482,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marta\\.nuget\\packages\\": {}
+    "C:\\Users\\jimmo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\marta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marta\\OneDrive\\Skrivbord\\flowboard\\flowboard\\backend\\obj\\",
+      "projectPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\estel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\estel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -551,7 +553,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
