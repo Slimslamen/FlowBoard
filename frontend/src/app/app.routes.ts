@@ -4,6 +4,7 @@ import { CreateAccountComponent } from './Components/login/create-account/create
 import { AdminComponent } from './Components/login/admin/admin.component';
 import { UserComponent } from './Components/login/user/user.component';
 import { HeroPageComponent } from './Components/hero-page/hero-page.component';
+import { BoardComponent } from './Components/board/board.component';
 
 export const routes: Routes = [
 
@@ -31,5 +32,10 @@ export const routes: Routes = [
         path: '',
         component: HeroPageComponent,
         title: "hero page"
+    },
+    {
+        path: 'Board',
+        component: BoardComponent,
+        title: "Board page"
     }
 ];
