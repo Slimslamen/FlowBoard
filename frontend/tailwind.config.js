@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         seaGreen : "#34C37C",
         seaBlue : "#006994",
+      },
+      backgroundImage: {
+        'hero-image': "url('/assets/Wave.jpg')"
       }
     },
     
