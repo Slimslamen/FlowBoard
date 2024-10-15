@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { log } from 'console';
 
 @Component({
   selector: 'app-create-account',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './create-account.component.css'
 })
 export class CreateAccountComponent {
+
+  isChecked : boolean = false
+adminFunction(ev: any) {
+  console.log(ev.target.checked);
+  this.isChecked = ev.target.checked;
+
+}
 
 }
