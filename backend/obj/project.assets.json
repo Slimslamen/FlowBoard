@@ -487,14 +487,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\jimmo\\OneDrive\\Desktop\\Ecutbildning\\Projekt\\flowboard\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\estel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\estel\\OneDrive\\Skrivbord\\flowboard\\backend\\obj\\",
+      "projectPath": "C:\\Users\\jimmo\\OneDrive\\Desktop\\Ecutbildning\\Projekt\\flowboard\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\jimmo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jimmo\\OneDrive\\Desktop\\Ecutbildning\\Projekt\\flowboard\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\estel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jimmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
