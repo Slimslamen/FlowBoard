@@ -1,3 +1,5 @@
+using backend.Models;
+
 namespace backend.Data;
 
 public class FlowboardContext : DbContext
