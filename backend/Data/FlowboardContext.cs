@@ -1,16 +1,17 @@
 using backend.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Data;
 
-public class FlowboardContext : DbContext
+public class FlowboardContext : IdentityDbContext<User>
 {
-    public DbSet<User> Users { get; set; }
+    public DbSet<User> Customers { get; set; }
     public DbSet<Card> Cards { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
-        option.UseNpgsql("",
+        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
         option => option.EnableRetryOnFailure());
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
