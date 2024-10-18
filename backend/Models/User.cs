@@ -1,9 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace backend.Models;
 
-public class User(int id, string username, string email, string password)
+public class User() : IdentityUser
 {
-    public int Id {get;set;} = id;
-    public string Username {get;set;} = username;
-    public string Email {get;set;} = email;
-    public string Password {get;set;} = password;
+
 }
