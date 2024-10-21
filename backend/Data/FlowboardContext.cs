@@ -7,7 +7,6 @@ namespace backend.Data;
 public class FlowboardContext : IdentityDbContext<User>
 {
     public DbSet<User> Customers { get; set; }
-    public DbSet<Card> Cards { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
@@ -19,8 +18,6 @@ public class FlowboardContext : IdentityDbContext<User>
      modelBuilder
      .Entity<User>()
      .HasKey(u => u.Id);
-     modelBuilder
-     .Entity<Card>()
-    .HasKey(c => c.Id);
+     base.OnModelCreating(modelBuilder);
     }
 }
