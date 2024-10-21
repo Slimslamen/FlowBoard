@@ -4,6 +4,7 @@ using backend.Services;
 using Microsoft.AspNetCore.Identity;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +21,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddIdentityCore<User>()
-.AddEntityFrameworkStores<FlowboardContext>();
+.AddEntityFrameworkStores<FlowboardContext>()
+.AddApiEndpoints();
+
 
 builder.Services.AddAuthentication()
 .AddCookie(IdentityConstants.ApplicationScheme, opt => {
@@ -41,7 +44,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-app.MapIdentityApi<IdentityUser>();
+//app.MapIdentityApi<IdentityUser>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
