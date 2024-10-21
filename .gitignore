@@ -1,7 +1,7 @@
 # Untracked files:
-obj
+obj/
 Properties
-bin
+bin/
 backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
 backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
 backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
@@ -27,3 +27,7 @@ backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
 backend/obj/Debug/net8.0/backend.AssemblyInfoInputs.cache
 backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
 backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
+backend/obj/Debug/net8.0/backend.AssemblyInfo.cs
+backend/obj/Debug/net8.0/backend.AssemblyInfoInputs.cache
+backend/obj/Debug/net8.0/backend.assets.cache
+backend/obj/Debug/net8.0/backend.GeneratedMSBuildEditorConfig.editorconfig
