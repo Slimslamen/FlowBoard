@@ -17,7 +17,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
 
 [HttpPost("register")]
 
-public async Task<ActionResult> Register([FromBody] RegisterDto registerDto)
+public async Task<ActionResult> Register(RegisterDto registerDto)
 {
     if (registerDto == null)
     return BadRequest();
