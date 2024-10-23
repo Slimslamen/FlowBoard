@@ -1,3 +1,3 @@
 namespace backend.DTO;
 
-public record LoginDto(string Email, string Password); //samt din Board
+public record LoginDto(string Username, string Password); //samt din Board
