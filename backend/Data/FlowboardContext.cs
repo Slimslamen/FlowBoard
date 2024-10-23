@@ -1,4 +1,5 @@
 using backend.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,15 +14,29 @@ public class FlowboardContext : IdentityDbContext<User>
 
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
-        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
-        //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
+        //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
+        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
         option => option.EnableRetryOnFailure());
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-     modelBuilder
-     .Entity<User>()
-     .HasKey(u => u.Id);
-     base.OnModelCreating(modelBuilder);
+        modelBuilder
+        .Entity<User>()
+        .HasKey(u => u.Id);
+        base.OnModelCreating(modelBuilder);
+        
+
+        IdentityRole adminRole = new("admin")
+        {
+            NormalizedName = "ADMIN"
+        };
+        IdentityRole userRole = new("user")
+        {
+            NormalizedName = "USER"
+        };
+        modelBuilder
+        .Entity<IdentityRole>()
+        .HasData(adminRole, userRole);
+        
     }
 }

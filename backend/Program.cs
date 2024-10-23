@@ -21,6 +21,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddIdentityCore<User>()
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<FlowboardContext>()
 .AddApiEndpoints();
 
