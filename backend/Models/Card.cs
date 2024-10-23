@@ -1,8 +1,8 @@
 namespace backend.Models;
 
-public class Card(int id, string task)
+public class Card(string title)
 {
-    public int Id = id;
-    public string Task = task;
-    //Comment for fun
-}
+    public int Id;
+    public string Title {get; set;} = title;
+    public List<Tasks>? Task {get;set;}
+} 

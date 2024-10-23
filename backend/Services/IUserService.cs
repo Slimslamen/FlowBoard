@@ -1,9 +1,12 @@
 using backend.DTO;
+using backend.Models;
 
 namespace backend.Services;
 
 public interface IUserService
 {
-    LoginDto GetUserById(int id);
-    LoginDto CreateUser(RegisterDto userDTO);
+    List<Card> GetAllResponseCards();
+    Card CreateResponseCard(Card card);
+    Tasks CreateResponseTask(Tasks task);
+
 }

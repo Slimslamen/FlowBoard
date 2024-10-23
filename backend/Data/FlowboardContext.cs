@@ -11,6 +11,9 @@ namespace backend.Data;
 public class FlowboardContext : IdentityDbContext<User>
 {
     public DbSet<User> Customers { get; set; }
+    public DbSet<Board> Boards { get; set; }
+     public DbSet<Card> Cards { get; set; }
+      public DbSet<Tasks> Tasks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
@@ -23,6 +26,20 @@ public class FlowboardContext : IdentityDbContext<User>
         modelBuilder
         .Entity<User>()
         .HasKey(u => u.Id);
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder
+        .Entity<Board>()
+        .HasKey(u => u.Id);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder
+            .Entity<Card>()
+            .HasKey(u => u.Id);
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder
+            .Entity<Tasks>()
+            .HasKey(u => u.Id);
         base.OnModelCreating(modelBuilder);
         
 
@@ -37,6 +54,6 @@ public class FlowboardContext : IdentityDbContext<User>
         modelBuilder
         .Entity<IdentityRole>()
         .HasData(adminRole, userRole);
-        
+
     }
 }

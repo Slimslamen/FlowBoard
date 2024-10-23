@@ -37,7 +37,7 @@ export class CardComponent {
       tasks: this.Tasks
     },
     {
-      title: "Blocked",
+      title: "Pause",
       tasks: this.Tasks
     }
   ];

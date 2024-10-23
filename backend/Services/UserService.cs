@@ -1,16 +1,24 @@
-using backend.DTO;
+using backend.Models;
+using backend.Repository;
 
 namespace backend.Services;
 
-public class UserService : IUserService
+public class UserService(IUserRepo repo) : IUserService
 {
-    public LoginDto CreateUser(RegisterDto userDTO)
+    private readonly IUserRepo _repo = repo;
+    public Card CreateResponseCard(Card card)
     {
-        throw new NotImplementedException();
+       return _repo.CreateCard(card);
     }
 
-    public LoginDto GetUserById(int id)
+    public Tasks CreateResponseTask(Tasks task)
     {
-        throw new NotImplementedException();
+       return _repo.CreateTask(task);
     }
+
+    public List<Card> GetAllResponseCards()
+    {
+       return _repo.GetAllCards();
+    }
+
 }
