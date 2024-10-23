@@ -1,9 +1,0 @@
-/* Du kan justera dessa stilar efter behov */
-#dropdownNavbar {
-    display: none; /* Döljer den som standard */
-  }
-  
-  #dropdownNavbar.show {
-    display: block; /* Visar den när den är öppen */
-  }
-  
