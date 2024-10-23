@@ -37,10 +37,10 @@ public async Task<ActionResult> Register([FromBody] RegisterDto registerDto)
 
 
 [HttpPost("login")]
-public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
+public async Task<ActionResult> Login(LoginDto loginDto)
 {
     _signInManager.AuthenticationScheme = IdentityConstants.ApplicationScheme;
-     var result = await _signInManager.PasswordSignInAsync(loginDto.Email, loginDto.Password, false, false);
+     var result = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, false);
 
     if (!result.Succeeded)
     {
