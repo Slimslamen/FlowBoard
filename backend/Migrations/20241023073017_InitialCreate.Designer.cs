@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(FlowboardContext))]
-    [Migration("20241021085113_Initialcreate")]
-    partial class Initialcreate
+    [Migration("20241023073017_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
