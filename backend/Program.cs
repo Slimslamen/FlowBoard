@@ -37,21 +37,14 @@ builder.Services.AddAuthentication()
         context.Response.StatusCode = 401;
         return Task.CompletedTask;
     };
+    opt.AccessDeniedPath = string.Empty;
+    opt.Events.OnRedirectToAccessDenied = context => {
+        context.Response.StatusCode = 401;
+        return Task.CompletedTask;
+    };
 });
-builder.Services.AddAuthorization(opt => {
-    opt.AddPolicy("AllowAdmin", policy => 
-    {
-        policy.RequireAssertion(Context => 
-        {
-            var UserAdmin = Context.User.FindFirst(c => c.Type == "AdminCode");
-            if(UserAdmin != null && int.TryParse(UserAdmin?.Value, out int adminCode))
-            {
-                return adminCode == 4444;
-            }
-            return false;
-        });
-    });
-});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -66,8 +59,9 @@ app.MapControllers();
 //app.MapIdentityApi<IdentityUser>();
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 app.Run();
 
