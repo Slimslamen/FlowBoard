@@ -61,7 +61,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
     }
 
     [HttpGet("GetAllCards")]
-    [Authorize(Policy = "AllowAdmin")]
+    [Authorize(Roles = "admin")]
     public ActionResult<Tasks> GetAllCards()
     {
         Tasks C = new("hej");

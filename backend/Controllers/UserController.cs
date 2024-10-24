@@ -7,13 +7,13 @@ namespace backend.Controllers;
 
 [ApiController]
 [Route("api/users")]
-public class UserController(UserService service) : ControllerBase
+public class UserController(IUserService service) : ControllerBase
 {
-    private readonly UserService _service = service;
+    private readonly IUserService _service = service;
 
 
     [HttpGet("GetCards")]
-    [Authorize(Policy = "AllowAdmin", Roles = "admin")]
+    [Authorize(Policy = "AllowAdmin")]
     public ActionResult<List<Card>> GetCards()
     {
         return _service.GetAllResponseCards();
