@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IUserRepo, UserRepo>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBoardService, BoardService>();
 
 builder.Services.AddIdentityCore<User>()
 .AddRoles<IdentityRole>()

@@ -3,10 +3,10 @@ using backend.Models;
 
 namespace backend.Services;
 
-public interface IUserService
+public interface IBoardService
 {
-    List<Card> GetAllResponseCards();
-    Card CreateResponseCard(Card card);
+    List<Board> GetAllResponseBoard();
+    Board CreateResponseBoard(Board board);
     Tasks CreateResponseTask(Tasks task);
 
 }

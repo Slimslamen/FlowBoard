@@ -7,9 +7,9 @@ namespace backend.Controllers;
 
 [ApiController]
 [Route("api/users")]
-public class UserController(IUserService service) : ControllerBase
+public class UserController(IBoardService service) : ControllerBase
 {
-    private readonly IUserService _service = service;
+    private readonly IBoardService _service = service;
 
 
     [HttpGet("GetCards")]
@@ -17,16 +17,5 @@ public class UserController(IUserService service) : ControllerBase
     public ActionResult<List<Card>> GetCards()
     {
         return _service.GetAllResponseCards();
-    }
-
-    [HttpPost("CreateCard")]
-    public ActionResult<Card> CreateCard(Card card)
-    {
-        return _service.CreateResponseCard(card);
-    }
-    [HttpPost]
-    public ActionResult<Tasks> CreateTask(Tasks task)
-    {
-        return _service.CreateResponseTask(task);
     }
 }
