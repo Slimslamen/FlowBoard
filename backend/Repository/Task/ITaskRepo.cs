@@ -8,4 +8,6 @@ public interface ITaskRepo
     List<Tasks> GetAllTasks();
 
     Tasks CreateTask(Tasks tasks);
+
+    Tasks? DeleteTask(int id);
 }

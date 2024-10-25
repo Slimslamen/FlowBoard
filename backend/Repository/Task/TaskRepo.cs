@@ -1,16 +1,37 @@
+using backend.Data;
 using backend.Models;
 
 namespace backend.Repository.Task;
 
-public class TaskRepo : ITaskRepo
+public class TaskRepo(FlowboardContext db) : ITaskRepo
 {
+    private readonly FlowboardContext _db = db;
+
     public Tasks CreateTask(Tasks tasks)
     {
-        throw new NotImplementedException();
+        _db.Tasks.Add(tasks);
+        _db.SaveChanges();
+        return tasks;
     }
 
     public List<Tasks> GetAllTasks()
     {
-        throw new NotImplementedException();
+        return _db.Tasks.ToList();
+    }
+
+    public Tasks? DeleteTask(int id)
+    {
+        Tasks? task = _db.Tasks.Find(id);
+        if (task != null)
+        {
+            _db.Tasks.Remove(task);
+            _db.SaveChanges();
+            return task;
+
+        }
+        else
+        {
+            return null;
+        }
     }
 }

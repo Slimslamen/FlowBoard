@@ -9,4 +9,6 @@ public interface ICardRepo
     
     Card CreateCard(Card card);
 
+    Card? DeleteCards(int id);
+
 }

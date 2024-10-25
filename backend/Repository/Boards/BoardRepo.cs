@@ -1,5 +1,7 @@
+using System.Data.Common;
 using backend.Data;
 using backend.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 namespace backend.Repository.Boards;
 
 
@@ -9,11 +11,30 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
 
     public Board CreateBoard(Board board)
     {
-        throw new NotImplementedException();
+        _db.Boards.Add(board);
+        _db.SaveChanges();
+        return board;
+
     }
 
     public List<Board> GetAllBoards()
     {
-        throw new NotImplementedException();
+        return _db.Boards.ToList();
+    }
+
+    public Board? DeleteOneBoard(int id)
+    {
+        Board? board = _db.Boards.Find(id);
+        if (board != null)
+        {
+            _db.Boards.Remove(board);
+            _db.SaveChanges();
+            return board;
+
+        } else 
+        {
+            return null;
+        }
+
     }
 }

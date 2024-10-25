@@ -1,24 +1,43 @@
+using backend.DTO.BoardDTO;
 using backend.Models;
 using backend.Services;
+using backend.Services.BoardFolder;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
-
+[ApiController]
+[Route("api/boards")]
 public class BoardController(IBoardService service) : ControllerBase
 {
-
-
     public readonly IBoardService _service = service;
 
+    [HttpGet("GetBoards")]
+    [Authorize(Roles = "admin")]
+    public ActionResult<List<Board>> GetBoards()
+    {
+        return _service.GetAllBoards();
+    }
 
-    [HttpPost("CreateCard")]
-    public ActionResult<Card> CreateCard(Card card)
+    [HttpPost("PostBoard")]
+
+    public ActionResult<Board> CreateBoard(BoardRequestDto boardRequestDto)
     {
-        return _service.CreateResponseCard(card);
+        return _service.CreateNewBoard(boardRequestDto);
     }
-    [HttpPost]
-    public ActionResult<Tasks> CreateTask(Tasks task)
+
+    [HttpDelete("{id}")]
+
+    public ActionResult<Board> DeleteById(int id)
     {
-        return _service.CreateResponseTask(task);
+        Board? board = _service.DeleteOneBoard(id);
+        if (board == null)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+
     }
+
 }
