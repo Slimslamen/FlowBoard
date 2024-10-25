@@ -60,11 +60,11 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
         }
     }
 
-    [HttpGet("GetAllCards")]
-    [Authorize(Roles = "admin")]
-    public ActionResult<Tasks> GetAllCards()
-    {
-        Tasks C = new("hej");
-        return C;
-    }
+    // [HttpGet("GetAllCards")]
+    // [Authorize(Roles = "admin")]
+    // public ActionResult<Tasks> GetAllCards()
+    // {
+    //     Tasks C = new("hej");
+    //     return C;
+    // }
 }
