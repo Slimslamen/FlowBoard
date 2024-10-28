@@ -3,13 +3,15 @@ using backend.DTO.BoardDTO;
 using backend.Models;
 using backend.Repository;
 using backend.Repository.Boards;
+using Microsoft.AspNetCore.Identity;
 
 namespace backend.Services.BoardFolder;
 
-public class BoardService(IBoardRepo repo, IMapper mapper) : IBoardService
+public class BoardService(IBoardRepo repo, IMapper mapper ) : IBoardService
 {
     private readonly IBoardRepo _repo = repo;
     private readonly IMapper _mapper = mapper;
+
 
     public Board CreateNewBoard(BoardRequestDto boardRequestDto)
     {
@@ -26,5 +28,13 @@ public class BoardService(IBoardRepo repo, IMapper mapper) : IBoardService
     public Board? DeleteOneBoard(int id)
     {
         return _repo.DeleteOneBoard(id);
+    }
+
+ 
+  
+        public List<BoardRequestDto> GetAllUserBoards(string userId)
+    {
+        var userBoards = _repo.GetAllUserBoard(userId);
+        return _mapper.Map<List<BoardRequestDto>>(userBoards);
     }
 }

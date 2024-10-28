@@ -36,4 +36,11 @@ public class CardRepo(FlowboardContext db) : ICardRepo
             return null;
         }
     }
+
+    public List<Card> GetAllUSerCards(string userId)
+    {
+         return _db.Cards
+         .Where(Card => Card.BoardId == userId)
+         .ToList();
+    }
 }

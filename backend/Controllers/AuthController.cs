@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using backend.DTO.AuthDtos;
+using System.Security.Claims;
 
 namespace backend.Controllers;
 
@@ -45,18 +47,19 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
 
 
     [HttpPost("login")]
-    public async Task<ActionResult> Login(LoginDto loginDto)
+    public async Task<ActionResult<LoginResponseDto>> Login(LoginDto loginDto)
     {
+        
         _signInManager.AuthenticationScheme = IdentityConstants.ApplicationScheme;
         var result = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, false);
-
+        string id = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unknown";
         if (!result.Succeeded)
         {
             return Problem(result.ToString(), statusCode: StatusCodes.Status401Unauthorized);
         }
         else
         {
-            return NoContent();
+            return new LoginResponseDto(id);
         }
     }
 

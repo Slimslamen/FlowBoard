@@ -1,3 +1,3 @@
 namespace backend.DTO.BoardDTO;
 
-public record BoardRequestDto(string Name); 
+public record BoardRequestDto(string Name, string UserId); 

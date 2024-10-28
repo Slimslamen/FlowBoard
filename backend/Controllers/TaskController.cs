@@ -1,4 +1,4 @@
-using backend.DTO.BoardDTO;
+using backend.DTO.TaskDTOs;
 using backend.Models;
 using backend.Services;
 using backend.Services.TaskFolder;
@@ -12,7 +12,7 @@ public class TaskController(ITaskService taskService) : ControllerBase
 {
     public readonly ITaskService _taskService = taskService;
 
-    [HttpGet("GetTasks")]
+    [HttpGet("Get All Tasks")]
     [Authorize(Roles = "admin")]
     public ActionResult<List<Tasks>> GetTasks()
     {
@@ -39,5 +39,11 @@ public class TaskController(ITaskService taskService) : ControllerBase
 
         return NoContent();
 
+    }
+        [HttpGet("Get all user Tasks")]
+         [Authorize(Policy = "UserParam")]
+     public ActionResult<List<TaskRequestDto>> GetUserTasks(string userId)
+    {
+        return _taskService.GetAllUserTasks(userId);
     }
 }

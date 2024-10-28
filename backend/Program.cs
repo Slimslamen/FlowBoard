@@ -54,7 +54,17 @@ builder.Services.AddAuthentication()
     };
 });
 
-builder.Services.AddAuthorization();
+
+builder.Services.AddAuthorization(opt => {
+    opt.AddPolicy("UserParam", Policy => {
+        Policy.RequireAssertion( context => {
+            string userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "Unknown";
+         var queryParam = new HttpContextAccessor()?.HttpContext?.Request.Query.FirstOrDefault(query => query.Key == "userId");
+         return queryParam != null && queryParam?.Value.ToString() == userId;
+        });
+    });
+});
+
 
 var app = builder.Build();
 
