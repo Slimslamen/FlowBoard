@@ -4,9 +4,11 @@ using backend.Models;
 
 namespace backend.Profiles;
 
-public class BoardProfile : Profile{
+public class BoardProfile : Profile
+{
     public BoardProfile()
     {
         CreateMap<BoardRequestDto, Board>();
+        CreateMap<Board, BoardRequestDto>();
     }
 }

@@ -1,3 +1,3 @@
-namespace backend.DTO.BoardDTO;
+namespace backend.DTO.CardDTOs;
 
-public record CardRequestDto(string Title); 
+public record CardRequestDto(string Title, string BoardId ); 

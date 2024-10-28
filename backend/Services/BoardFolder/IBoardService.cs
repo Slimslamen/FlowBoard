@@ -7,6 +7,7 @@ namespace backend.Services.BoardFolder;
 public interface IBoardService
 {
     List<Board> GetAllBoards();
+    List<BoardRequestDto> GetAllUserBoards(string userId);
     Board CreateNewBoard(BoardRequestDto boardRequestDto);
     Board? DeleteOneBoard(int id);
 

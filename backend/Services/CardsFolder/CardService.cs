@@ -1,5 +1,5 @@
 using AutoMapper;
-using backend.DTO.BoardDTO;
+using backend.DTO.CardDTOs;
 using backend.Models;
 using backend.Repository.Cards;
 
@@ -24,6 +24,12 @@ public class CardService(ICardRepo cardRepo, IMapper mapper) : ICardService
     public Card? DeleteCards(int id)
     {
        return _cardRepo.DeleteCards(id);
+    }
+
+    public List<CardRequestDto> GetAllUserCards(string boardId)
+    {
+         var userCards = _cardRepo.GetAllUSerCards(boardId);
+        return _mapper.Map<List<CardRequestDto>>(userCards);
     }
 }
 

@@ -1,4 +1,4 @@
-using backend.DTO.BoardDTO;
+using backend.DTO.CardDTOs;
 using backend.Models;
 using backend.Repository.Cards;
 using backend.Services.CardsFolder;
@@ -13,7 +13,7 @@ public class CardController(ICardService cardService) : ControllerBase
 {
     public readonly ICardService _cardService = cardService;
 
-    [HttpGet("GetCards")]
+    [HttpGet("Get All Cards")]
     [Authorize(Roles = "admin")]
     public ActionResult<List<Card>> GetCards()
     {
@@ -40,5 +40,11 @@ public class CardController(ICardService cardService) : ControllerBase
 
         return NoContent();
 
+    }
+        [HttpGet("Get all user cards")]
+           [Authorize(Policy = "UserParam")]
+     public ActionResult<List<CardRequestDto>> GetUserCards([FromQuery] string userId)
+    {
+        return _cardService.GetAllUserCards(userId);
     }
 }

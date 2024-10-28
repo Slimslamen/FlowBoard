@@ -1,5 +1,6 @@
 using System.Data.Common;
 using backend.Data;
+using backend.DTO.BoardDTO;
 using backend.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 namespace backend.Repository.Boards;
@@ -19,8 +20,10 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
 
     public List<Board> GetAllBoards()
     {
-        return _db.Boards.ToList();
+        return _db.Boards
+        .ToList();
     }
+
 
     public Board? DeleteOneBoard(int id)
     {
@@ -36,5 +39,12 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
             return null;
         }
 
+    }
+
+    public List<Board> GetAllUserBoard(string userId)
+    {
+       return _db.Boards
+         .Where(board => board.UserId == userId)
+       .ToList();
     }
 }

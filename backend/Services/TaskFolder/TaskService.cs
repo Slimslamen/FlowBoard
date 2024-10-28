@@ -1,5 +1,5 @@
 using AutoMapper;
-using backend.DTO.BoardDTO;
+using backend.DTO.TaskDTOs;
 using backend.Models;
 using backend.Repository.Task;
 
@@ -24,5 +24,11 @@ public class TaskService(ITaskRepo taskRepo, IMapper mapper) : ITaskService
     public Tasks? DeleteTask(int id)
     {
         return _taskRepo.DeleteTask(id);
+    }
+
+    public List<TaskRequestDto> GetAllUserTasks(string taskId)
+    {
+     var userTasks = _taskRepo.GetAllUserTasks(taskId);
+        return _mapper.Map<List<TaskRequestDto>>(userTasks);
     }
 }

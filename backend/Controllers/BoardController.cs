@@ -12,7 +12,7 @@ public class BoardController(IBoardService service) : ControllerBase
 {
     public readonly IBoardService _service = service;
 
-    [HttpGet("GetBoards")]
+    [HttpGet("Get All Boards")]
     [Authorize(Roles = "admin")]
     public ActionResult<List<Board>> GetBoards()
     {
@@ -23,6 +23,7 @@ public class BoardController(IBoardService service) : ControllerBase
 
     public ActionResult<Board> CreateBoard(BoardRequestDto boardRequestDto)
     {
+
         return _service.CreateNewBoard(boardRequestDto);
     }
 
@@ -38,6 +39,13 @@ public class BoardController(IBoardService service) : ControllerBase
 
         return NoContent();
 
+    }
+    [HttpGet("Get all user boards")]
+    [Authorize(Policy = "UserParam")]
+     public ActionResult<List<BoardRequestDto>> GetUserBoards([FromQuery] string userId)
+    {
+
+        return _service.GetAllUserBoards(userId);
     }
 
 }

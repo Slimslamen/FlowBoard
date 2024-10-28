@@ -34,4 +34,11 @@ public class TaskRepo(FlowboardContext db) : ITaskRepo
             return null;
         }
     }
+
+    public List<Tasks> GetAllUserTasks(string userId)
+    {
+           return _db.Tasks
+           .Where(task => task.CardId == userId)
+           .ToList();
+    }
 }
