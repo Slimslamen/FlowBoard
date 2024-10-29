@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { User } from '../../../core/models/user.interface';
 
 @Component({
   selector: 'app-create-account',
@@ -9,6 +10,9 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './create-account.component.css',
 })
 export class CreateAccountComponent {
+  user: User[] = [
+
+  ]
   isChecked: boolean = false;
   adminFunction(ev: any) {
     console.log(ev.target.checked);
