@@ -10,13 +10,13 @@ export class RegisterService {
 
 
   constructor(private http: HttpClient) { }
-  url =" http://localhost:5228/api/auth";
+  url =" http://localhost:5228/api/auth/";
 
 
   postUsers = (user:User):Observable<any> => {
     const headers={'content-type': 'application/json'}
     const body=JSON.stringify(user);
     console.log(body)
-    return this.http.post(this.url + 'user', body,{'headers':headers} )
+    return this.http.post(this.url + 'register', body,{'headers':headers} )
   }
 }
