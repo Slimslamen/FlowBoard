@@ -62,12 +62,12 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
             return new LoginResponseDto(id);
         }
     }
+    [HttpPost("Sign Out")]
+    public async Task<ActionResult<SignOutDto>> SignOut (SignOutDto signOutDto)
+    {
+       await _signInManager.SignOutAsync();
+       return signOutDto;
+    }
 
-    // [HttpGet("GetAllCards")]
-    // [Authorize(Roles = "admin")]
-    // public ActionResult<Tasks> GetAllCards()
-    // {
-    //     Tasks C = new("hej");
-    //     return C;
-    // }
+
 }
