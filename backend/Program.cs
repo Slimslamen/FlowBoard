@@ -39,6 +39,15 @@ builder.Services.AddIdentityCore<User>()
 .AddEntityFrameworkStores<FlowboardContext>()
 .AddApiEndpoints();
 
+builder.Services.AddCors( options =>
+{
+    options.AddDefaultPolicy(policy => 
+    {
+        policy.WithOrigins(["http://localhost:5500","http://localhost:4200" ]);
+        policy.WithHeaders("content-Type");
+        policy.AllowCredentials();
+    });
+});
 
 builder.Services.AddAuthentication()
 .AddCookie(IdentityConstants.ApplicationScheme, opt => {
@@ -78,6 +87,7 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 //app.MapIdentityApi<IdentityUser>();
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
