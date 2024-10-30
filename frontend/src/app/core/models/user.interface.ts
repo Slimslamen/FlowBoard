@@ -4,3 +4,13 @@ export interface User {
   password: string;
   adminCode: number;
 }
+export interface ICurrentUser {
+  username: string;
+  password: string;
+}
+export interface ICurrentAdmin {
+  username: string;
+  password: string;
+  admincode: number;
+}
+

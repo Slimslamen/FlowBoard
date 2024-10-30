@@ -23,6 +23,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
     {
         if (registerDto == null)
             return BadRequest();
+        
 
         User user = _mapper.Map<User>(registerDto);
         IdentityResult result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -62,7 +63,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
             return new LoginResponseDto(id);
         }
     }
-    [HttpPost("Sign Out")]
+    [HttpPost("SignOut")]
     public async Task<ActionResult<SignOutDto>> SignOut (SignOutDto signOutDto)
     {
        await _signInManager.SignOutAsync();
