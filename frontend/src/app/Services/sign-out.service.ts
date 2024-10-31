@@ -30,7 +30,7 @@ export class SignOutService {
 
   postSignOut = (user:ICurrentUser):Observable<any> => {
     const headers={'content-type': 'application/json'}
-    const body=JSON.stringify(user.username);
+    const body=JSON.stringify({"username": user.username});
     console.log(body)
     console.log(user.username)
     return this.http.post(this.url + 'SignOut', body,{'headers':headers} )
