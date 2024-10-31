@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SignOutService } from '../../Services/sign-out.service';
+import { SignOutService } from '../../Services/signout/sign-out.service'; 
 import { response } from 'express';
 import { log } from 'console';
 import { ICurrentUser } from '../../core/models/user.interface';
