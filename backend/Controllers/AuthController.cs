@@ -63,6 +63,16 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
             return new LoginResponseDto(id);
         }
     }
+    [HttpGet("CurrentUser")]
+    public ActionResult<UserDto> GetCurrentUser()
+    {
+        string id = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unknown";
+        string name = User.Identity?.Name ?? "unknown";
+        List<string> roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
+
+        return new UserDto(id ,name, roles);
+    }
+
     [HttpPost("SignOut")]
     public async Task<ActionResult<SignOutDto>> SignOut (SignOutDto signOutDto)
     {

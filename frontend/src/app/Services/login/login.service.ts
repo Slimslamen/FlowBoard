@@ -13,6 +13,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
   url =" http://localhost:5228/api/auth/login";
+  urlCurrentUser =" http://localhost:5228/api/auth/CurrentUser";
 
 
   postLoginUser = (user:ICurrentUser):Observable<any> => {
@@ -22,5 +23,8 @@ export class LoginService {
     this.signOutService.setCurrentUser(user);
     console.log(user)
     return this.http.post(this.url, body,{'headers':headers, withCredentials: true})
+  }
+  getUser = () => {
+    return this.http.get(this.urlCurrentUser, {withCredentials : true})
   }
 }
