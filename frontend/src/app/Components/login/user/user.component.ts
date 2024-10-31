@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../Services/login.service';
+import { LoginService } from '../../../Services/login/login.service'; 
 import { CommonModule } from '@angular/common';
 import { ICurrentUser } from '../../../core/models/user.interface';
 import { firstValueFrom } from 'rxjs';

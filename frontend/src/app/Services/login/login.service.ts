@@ -1,26 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ICurrentUser } from '../core/models/user.interface';
 import { Observable } from 'rxjs';
-import { SignOutService } from './sign-out.service';
+import { ICurrentUser } from '../../core/models/user.interface'; 
+import { SignOutService } from '../signout/sign-out.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminLoginService {
+export class LoginService {
 
   signOutService:SignOutService = inject(SignOutService);
 
   constructor(private http: HttpClient) { }
-  url =" http://localhost:5228/api/auth/";
+  url =" http://localhost:5228/api/auth/login";
 
 
-  postAdminLogin = (user:ICurrentUser):Observable<any> => {
+  postLoginUser = (user:ICurrentUser):Observable<any> => {
     const headers={'content-type': 'application/json'}
     const body=JSON.stringify(user);
     console.log(body)
     this.signOutService.setCurrentUser(user);
     console.log(user)
-    return this.http.post(this.url + 'login', body,{'headers':headers} )
+    return this.http.post(this.url, body,{'headers':headers, withCredentials: true})
   }
 }

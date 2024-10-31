@@ -46,12 +46,6 @@
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
         />
-        <div
-          *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
-          style="color: red; padding-top: 0.2rem;"
-        >
-          Please choose an username
-        </div>
       </div>
       <div class="mb-5 mt-5">
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password:</label>
@@ -63,6 +57,17 @@
           required
         />
       </div>
+      <div
+
+      style="color: red; padding-top: 0.2rem;"
+    >
+    @for (error of errorList; track $index) {
+      <ul class="list-disc">
+        <li>{{error.description}}</li>
+      </ul>
+    
+    }
+    </div>
       <div class="mb-5 mt-5">
         <label for="adminCode" class="block mb-2 text-sm font-medium text-gray-900">Do you have an Admin Code?</label>
         <input
@@ -71,6 +76,11 @@
           formControlName="adminCode"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         />
+      </div>
+      <div  *ngIf="registerForm.get('adminCode')?.hasError('adminValidator')"
+      style="color: red; padding-top: 0.2rem;">
+          admincode was wrong
+       
       </div>
         <button
           type="submit"
