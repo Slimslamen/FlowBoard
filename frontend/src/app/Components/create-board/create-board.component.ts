@@ -30,7 +30,7 @@ export class CreateBoardComponent {
   isOpen: boolean = false;
   registerForm: FormGroup;
   loginService: LoginService = inject(LoginService);
-  user: CurrentUser;
+  user?: CurrentUser;
 
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
@@ -53,7 +53,7 @@ export class CreateBoardComponent {
   getUser() {
     this.loginService.getUser().subscribe(
       user => {
-        this.user = user;
+        this.user = user as CurrentUser;
         console.log(this.user); 
       },
       error => {
