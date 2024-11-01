@@ -13,7 +13,7 @@ export interface ICurrentUser {
 
 export interface CurrentUser {
   id: string;
-  name: string;
+  username: string;
   roles?: string[];
 
 }

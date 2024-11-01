@@ -1,4 +1,4 @@
 export interface IBoards
 {
-    Name: string;
+    Name: string[];
 }

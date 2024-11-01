@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Services/login/login.service'; 
 import { CommonModule } from '@angular/common';
-import { ICurrentUser } from '../../../core/models/user.interface';
+import { CurrentUser, ICurrentUser } from '../../../core/models/user.interface';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -21,6 +21,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class UserComponent implements OnInit {
   loginForm: FormGroup;
+  user?: CurrentUser;
 
   IsGood : boolean = true;
 
@@ -45,7 +46,7 @@ export class UserComponent implements OnInit {
   this.LoginService.postLoginUser(newUser).subscribe(
     response => {
       console.log('Post successfully:', response);
-      this.router.navigate(['/Board'])
+      this.router.navigate(['/createBoard',response.userId])
       this.IsGood = true;
     },
     error => {

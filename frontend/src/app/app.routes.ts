@@ -34,8 +34,9 @@ export const routes: Routes = [
         title: "Board page"
     },
     {
-        path: 'createBoard',
+        path: 'createBoard/:userId',
         component: CreateBoardComponent,
         title: "Create board"
+
     }
 ];
