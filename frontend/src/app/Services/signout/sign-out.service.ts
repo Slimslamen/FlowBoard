@@ -9,7 +9,7 @@ import { ICurrentUser } from '../../core/models/user.interface';
 })
 export class SignOutService {
 
-private CurrentUser: ICurrentUser | null = null;
+private CurrentUser?: ICurrentUser
 
   
 

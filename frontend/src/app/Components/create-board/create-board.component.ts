@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,10 @@ import {
 import { RouterLink, RouterModule } from '@angular/router';
 import { LoginService } from '../../Services/login/login.service';
 import { CurrentUser, ICurrentUser, User } from '../../core/models/user.interface';
+
+import { IBoards } from '../../core/models/boards.interface';
+import { BoardsService } from '../../Services/boards/boards.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-create-board',
@@ -24,13 +28,15 @@ import { CurrentUser, ICurrentUser, User } from '../../core/models/user.interfac
   templateUrl: './create-board.component.html',
   styleUrl: './create-board.component.css',
 })
-export class CreateBoardComponent {
+export class CreateBoardComponent implements OnInit {
   cardCount: number = 0; // Antalet cards som användaren vill skapa
   cards: string[] = []; // En array för att hålla cardnamn
   isOpen: boolean = false;
   registerForm: FormGroup;
   loginService: LoginService = inject(LoginService);
+  boardService: BoardsService = inject(BoardsService);
   user?: CurrentUser;
+  boards?: IBoards[];
 
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
@@ -38,10 +44,30 @@ export class CreateBoardComponent {
       cardName: ['', [Validators.required, Validators.email]],
     });
   }
+  ngOnInit(): void {
+   this.getBoards();
+  }
   openCreate() {
     this.isOpen = !this.isOpen;
   }
-  addBoard() {}
+  addBoard() {
+
+  }
+
+
+  
+  getBoards(){
+    this.boardService.getAllUserBoards().subscribe(
+      (board) => {
+        this.boards = board;
+        console.log("hämtat boards");
+      },
+      (error) => {
+        console.log("Not working");
+      });
+  }
+ 
+
 
   updateCardCount(event: Event) {
     const target = event.target as HTMLSelectElement; // Typkonvertering
@@ -50,16 +76,6 @@ export class CreateBoardComponent {
     this.cards = Array(count).fill(''); // Initiera arrayen med antal tomma element
   }
 
-  getUser() {
-    this.loginService.getUser().subscribe(
-      user => {
-        this.user = user as CurrentUser;
-        console.log(this.user); 
-      },
-      error => {
-        console.error("Ett fel uppstod vid hämtning av användaren: ", error);
-      }
-    );
-  }
+
   
 }
