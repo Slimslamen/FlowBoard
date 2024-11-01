@@ -1,34 +1,47 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { RouterLink, RouterModule } from '@angular/router';
+import { LoginService } from '../../Services/login/login.service';
+import { CurrentUser, ICurrentUser, User } from '../../core/models/user.interface';
 
 @Component({
   selector: 'app-create-board',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './create-board.component.html',
-  styleUrl: './create-board.component.css'
+  styleUrl: './create-board.component.css',
 })
 export class CreateBoardComponent {
   cardCount: number = 0; // Antalet cards som användaren vill skapa
   cards: string[] = []; // En array för att hålla cardnamn
-  isOpen: boolean = false
+  isOpen: boolean = false;
   registerForm: FormGroup;
+  loginService: LoginService = inject(LoginService);
+  user: CurrentUser;
 
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       boardName: ['', [Validators.required]],
       cardName: ['', [Validators.required, Validators.email]],
-      
     });
   }
   openCreate() {
-this.isOpen = !this.isOpen
+    this.isOpen = !this.isOpen;
   }
-  addBoard() {
-    
-  }
+  addBoard() {}
 
   updateCardCount(event: Event) {
     const target = event.target as HTMLSelectElement; // Typkonvertering
@@ -36,7 +49,17 @@ this.isOpen = !this.isOpen
     this.cardCount = count;
     this.cards = Array(count).fill(''); // Initiera arrayen med antal tomma element
   }
-  
-  
+
+  getUser() {
+    this.loginService.getUser().subscribe(
+      user => {
+        this.user = user;
+        console.log(this.user); 
+      },
+      error => {
+        console.error("Ett fel uppstod vid hämtning av användaren: ", error);
+      }
+    );
+  }
   
 }

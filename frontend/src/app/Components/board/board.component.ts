@@ -26,19 +26,15 @@ export class BoardComponent implements OnInit {
   // boardsService:BoardsService = inject(BoardsService);
 
   GetUser() {
-/*     if (this.CurrentUser) 
-      this.loginService.postLoginUser(this.CurrentUser.username,this.CurrentUser.adminRole).subscribe(
-      response => this.loginService.getUser().subscribe(
-        user => {
-          if (this.CurrentUser) 
-          this.CurrentUser = user
-        }
-      )
-    ) */
-    this.CurrentUser = this.Service.getCurrentUser();
-    console.log("Test worked " + this.CurrentUser?.username);
-    
+    const currentUser = this.Service.getCurrentUser();
+    if (currentUser) {
+      this.CurrentUser = currentUser;
+      console.log("Användarnamn: " + this.CurrentUser?.username);
+    } else {
+      console.warn("Ingen användare är inloggad.");
+    }
   }
+  
 
   ngOnInit(): void {
     this.GetUser();

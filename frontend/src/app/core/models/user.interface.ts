@@ -11,3 +11,10 @@ export interface ICurrentUser {
   adminRole?: string[];
 }
 
+export interface CurrentUser {
+  id: string;
+  name: string;
+  roles?: string[];
+
+}
+
