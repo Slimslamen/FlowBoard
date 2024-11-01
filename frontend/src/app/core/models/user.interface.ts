@@ -8,5 +8,6 @@ export interface User {
 export interface ICurrentUser {
   username: string;
   password: string;
+  adminRole?: string[];
 }
 
