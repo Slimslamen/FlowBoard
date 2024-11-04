@@ -40,7 +40,7 @@ public class TaskController(ITaskService taskService) : ControllerBase
         return NoContent();
 
     }
-        [HttpGet("Get all user Tasks")]
+        [HttpGet("GetUserTasks")]
         
      public ActionResult<List<TaskRequestDto>> GetUserTasks(int id)
     {

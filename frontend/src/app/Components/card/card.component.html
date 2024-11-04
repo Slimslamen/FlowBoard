@@ -7,17 +7,18 @@
       {{Tasks.title}}
     </h5>
     <div>
-      <ul *ngFor="let item of Tasks.tasks" class="my-4 space-y-3 flex flex-col">
+      <ul *ngFor="let item of Tasks.task" class="my-4 space-y-3 flex flex-col">
         <li>
           <div
             href="#"
             class="flex items-center p-3 text-base font-semibold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow"
           >
             <p>{{item.id}}.</p>
-            <span class="flex-1 ms-3 whitespace-nowrap">{{item.task}}</span>
+            <span class="flex-1 ms-3 whitespace-nowrap">{{item.taskName}}</span>
           </div>
         </li>
       </ul>
     </div>
   </div>
+  
 </div>

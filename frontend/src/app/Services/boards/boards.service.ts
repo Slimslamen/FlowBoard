@@ -17,6 +17,10 @@ import { IOneBoard } from '../../core/models/OneBoard';
    setUserId(id:string){
     this.userId = id;
    }
+   getUserId()
+   {
+    return this.BoardId;
+   }
    setBoardId(id:number){
     this.BoardId = id;
    }

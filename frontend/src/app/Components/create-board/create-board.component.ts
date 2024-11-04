@@ -18,6 +18,7 @@ import {
 import { IBoards } from '../../core/models/boards.interface';
 import { BoardsService } from '../../Services/boards/boards.service';
 import { Router } from '@angular/router';
+import { TasksService } from '../../Services/CardTasks/tasks.service';
 
 @Component({
   selector: 'app-create-board',
@@ -39,6 +40,7 @@ export class CreateBoardComponent implements OnInit {
   registerForm: FormGroup;
   loginService: LoginService = inject(LoginService);
   boardService: BoardsService = inject(BoardsService);
+  TaskService: TasksService = inject(TasksService);
   user?: CurrentUser;
   boards?: IBoards[];
   Images: string[] = [
@@ -69,6 +71,7 @@ export class CreateBoardComponent implements OnInit {
   }
   NavigateToBoard(id: number) {
     this.boardService.setBoardId(id);
+    this.TaskService.setBoardId(id)
     this.router.navigate(['/Board',id])
   }
 
