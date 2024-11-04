@@ -11,5 +11,6 @@ public interface IBoardRepo
     Board? DeleteOneBoard(int id);
 
     List<Board> GetAllUserBoard(string userId);
+    Board? GetBoard(int id);
 
 }

@@ -35,10 +35,10 @@ public class TaskRepo(FlowboardContext db) : ITaskRepo
         }
     }
 
-    public List<Tasks> GetAllUserTasks(string userId)
+    public List<Tasks> GetAllUserTasks(int boardId)
     {
            return _db.Tasks
-           .Where(task => task.CardId == userId)
+           .Where(task => task.BoardId == boardId)
            .ToList();
     }
 }

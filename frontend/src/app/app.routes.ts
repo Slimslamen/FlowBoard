@@ -29,7 +29,7 @@ export const routes: Routes = [
         title: "hero page"
     },
     {
-        path: 'Board',
+        path: 'Board/:id',
         component: BoardComponent,
         title: "Board page"
     },

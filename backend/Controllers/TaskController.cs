@@ -41,9 +41,9 @@ public class TaskController(ITaskService taskService) : ControllerBase
 
     }
         [HttpGet("Get all user Tasks")]
-         [Authorize(Policy = "UserParam")]
-     public ActionResult<List<TaskRequestDto>> GetUserTasks(string userId)
+        
+     public ActionResult<List<TaskRequestDto>> GetUserTasks(int id)
     {
-        return _taskService.GetAllUserTasks(userId);
+        return _taskService.GetAllUserTasks(id);
     }
 }

@@ -6,7 +6,7 @@ namespace backend.Repository.Task;
 public interface ITaskRepo
 {
     List<Tasks> GetAllTasks();
-      List<Tasks> GetAllUserTasks(string userId);
+      List<Tasks> GetAllUserTasks(int id);
 
     Tasks CreateTask(Tasks tasks);
 

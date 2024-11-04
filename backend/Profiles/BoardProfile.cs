@@ -9,6 +9,6 @@ public class BoardProfile : Profile
     public BoardProfile()
     {
         CreateMap<BoardRequestDto, Board>();
-        CreateMap<Board, BoardRequestDto>();
+        CreateMap<Board, BoardResponseDTO>();
     }
 }

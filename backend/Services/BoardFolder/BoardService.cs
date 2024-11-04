@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace backend.Services.BoardFolder;
 
-public class BoardService(IBoardRepo repo, IMapper mapper ) : IBoardService
+public class BoardService(IBoardRepo repo, IMapper mapper) : IBoardService
 {
     private readonly IBoardRepo _repo = repo;
     private readonly IMapper _mapper = mapper;
@@ -30,11 +30,19 @@ public class BoardService(IBoardRepo repo, IMapper mapper ) : IBoardService
         return _repo.DeleteOneBoard(id);
     }
 
- 
-  
-        public List<BoardRequestDto> GetAllUserBoards(string userId)
+
+
+    public List<BoardResponseDTO> GetAllUserBoards(string userId)
     {
         var userBoards = _repo.GetAllUserBoard(userId);
-        return _mapper.Map<List<BoardRequestDto>>(userBoards);
+        return _mapper.Map<List<BoardResponseDTO>>(userBoards);
+    }
+
+    public Board? GetResponseBoard(int id)
+    {
+        Board? b = _repo.GetBoard(id);
+        //BoardRequestDto? Board = _mapper.Map<BoardRequestDto>(b);
+
+        return b;
     }
 }

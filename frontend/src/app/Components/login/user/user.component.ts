@@ -11,6 +11,7 @@ import { LoginService } from '../../../Services/login/login.service';
 import { CommonModule } from '@angular/common';
 import { CurrentUser, ICurrentUser } from '../../../core/models/user.interface';
 import { firstValueFrom } from 'rxjs';
+import { BoardsService } from '../../../Services/boards/boards.service';
 
 @Component({
   selector: 'app-user',
@@ -26,6 +27,7 @@ export class UserComponent implements OnInit {
   IsGood : boolean = true;
 
   private LoginService: LoginService = inject(LoginService);
+  private BoardsService: BoardsService = inject(BoardsService);
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -46,6 +48,7 @@ export class UserComponent implements OnInit {
   this.LoginService.postLoginUser(newUser).subscribe(
     response => {
       console.log('Post successfully:', response);
+      this.BoardsService.setUserId(response.userId);
       this.router.navigate(['/createBoard',response.userId])
       this.IsGood = true;
     },

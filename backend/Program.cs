@@ -3,11 +3,9 @@ using backend.Data;
 using backend.Models;
 using backend.Repository;
 using backend.Repository.Boards;
-using backend.Repository.Cards;
 using backend.Repository.Task;
 using backend.Services;
 using backend.Services.BoardFolder;
-using backend.Services.CardsFolder;
 using backend.Services.TaskFolder;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
@@ -29,8 +27,6 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IBoardRepo, BoardRepo>();
 builder.Services.AddScoped<IBoardService, BoardService>();
-builder.Services.AddScoped<ICardRepo, CardRepo>();
-builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<ITaskRepo, TaskRepo>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 

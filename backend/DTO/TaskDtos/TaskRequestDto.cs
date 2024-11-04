@@ -1,3 +1,3 @@
 namespace backend.DTO.TaskDTOs;
 
-public record TaskRequestDto(string TaskName, string CardId); 
+public record TaskRequestDto(string TaskName, string BoardId, string State); 

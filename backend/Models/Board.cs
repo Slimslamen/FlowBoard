@@ -12,5 +12,5 @@ public class Board(string name, string userId)
     [ForeignKey("User")]
     public string UserId { get; set; } = userId;
     public User? User { get; set; }  
-    public List<Card>? Cards { get;set; }
+    public List<Tasks>? Tasks { get;set; } = [];
 }

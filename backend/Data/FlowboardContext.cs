@@ -12,15 +12,14 @@ public class FlowboardContext : IdentityDbContext<User>
 {
     public DbSet<User> Customers { get; set; }
     public DbSet<Board> Boards { get; set; }
-     public DbSet<Card> Cards { get; set; }
-      public DbSet<Tasks> Tasks { get; set; }
+    public DbSet<Tasks> Tasks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
-        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
-       // option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
-        //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=MartaEstelle;Database=Flowboard;",
-        option => option.EnableRetryOnFailure());
+        //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
+        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
+         //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=MartaEstelle;Database=Flowboard;",
+         option => option.EnableRetryOnFailure());
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,15 +33,10 @@ public class FlowboardContext : IdentityDbContext<User>
         .HasKey(u => u.Id);
         base.OnModelCreating(modelBuilder);
         modelBuilder
-            .Entity<Card>()
-            .HasKey(u => u.Id);
-        base.OnModelCreating(modelBuilder);
-
-        modelBuilder
             .Entity<Tasks>()
             .HasKey(u => u.Id);
         base.OnModelCreating(modelBuilder);
-        
+
 
         IdentityRole adminRole = new("admin")
         {

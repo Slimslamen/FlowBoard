@@ -47,4 +47,13 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
          .Where(board => board.UserId == userId)
        .ToList();
     }
+
+    public Board? GetBoard(int id)
+    {
+        Board? b = _db.Boards.Find(id);
+        if(b != null)
+        return b;
+
+        return null;
+    }
 }
