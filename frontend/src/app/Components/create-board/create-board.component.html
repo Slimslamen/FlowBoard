@@ -4,7 +4,10 @@
 <main class="">
     <a routerLink="/Board" class=" cursor-pointer px-5 py-3 text-base font-medium text-center text-white ">
  <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight
-  text-seaBlue md:text-5xl lg:text-6xl ">Your current boards</h1>
+  text-seaBlue md:text-5xl lg:text-6xl ">   @if (user) {
+       
+    {{user.username}}s
+  } current boards</h1>
  </a>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-5">
   @for (board of boards; track $index) {
