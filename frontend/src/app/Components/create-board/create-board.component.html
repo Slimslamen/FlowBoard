@@ -2,17 +2,17 @@
 
 
 <main class="">
-    <a routerLink="/Board" class=" cursor-pointer px-5 py-3 text-base font-medium text-center text-white ">
+   
  <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight
-  text-seaBlue md:text-5xl lg:text-6xl ">   @if (user) {
+  text-seaBlue md:text-5xl lg:text-6xl cursor-default ">   @if (user) {
        
     {{user.username}}s
   } current boards</h1>
- </a>
+ 
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-5">
   @for (board of boards; track $index) {
     <div class="relative" (click)="NavigateToBoard(board.id)">
-        <img class="h-auto max-w-full rounded-lg" [src]="SavedImg" alt="">
+        <img class="h-auto max-w-full rounded-lg" [src]="generateRandomImage()" alt="">
         <span class="absolute top-2 right-2 text-white bg-black bg-opacity-60 rounded px-2 py-1 text-xs">{{board.name}}</span>
     </div>
 }
