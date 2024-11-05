@@ -44,11 +44,13 @@ export class CreateBoardComponent implements OnInit {
   user?: CurrentUser;
   boards?: IBoards[];
   Images: string[] = [
-    '../../../assets/Image1.jpg',
-    '../../../assets/Image2.jpg',
-    '../../../assets/Image3.jpg',
+    '/assets/Image1.jpg',
+    '/assets/Image2.jpg',
+    '/assets/Image3.jpg',
+    '/assets/Image4.jpg',
+    '/assets/Image5.jpg'
   ];
-  SavedImg!: string;
+
 
   constructor(private formBuilder: FormBuilder, private router:Router) {
     this.registerForm = this.formBuilder.group({
@@ -56,11 +58,12 @@ export class CreateBoardComponent implements OnInit {
       cardName: ['', [Validators.required, Validators.email]],
     });
   }
+  
   ngOnInit(): void {
     this.getBoards();
-    this.generateRandomImage();
     this.getCurrentUser();
   }
+
     getCurrentUser() {
     this.loginService.getUser().subscribe(
     (user) => {
@@ -79,7 +82,7 @@ export class CreateBoardComponent implements OnInit {
 
   generateRandomImage() {
     const Randomnmb = Math.floor(Math.random() * this.Images.length);
-    this.SavedImg = this.Images[Randomnmb];
+    return this.Images[Randomnmb];
   }
   NavigateToBoard(id: number) {
     this.boardService.setBoardId(id);
@@ -92,7 +95,6 @@ export class CreateBoardComponent implements OnInit {
       (board) => {
         this.boards = board;
         console.log(board);
-        this.generateRandomImage();
       },
       (error) => {
         console.log('Not working');
