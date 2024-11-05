@@ -7,6 +7,8 @@ import { TasksService } from '../../Services/CardTasks/tasks.service';
 import { firstValueFrom } from 'rxjs';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { subscribe } from 'diagnostics_channel';
+import { error } from 'console';
 
 @Component({
   selector: 'app-card',
@@ -36,6 +38,21 @@ export class CardComponent implements OnInit {
       console.log('Test ID:', this.boardId);
     });
   }
+
+  DeleteOneTask(taskId?:number) {
+   if(taskId === undefined)
+   {
+    console.log("undefined")
+    return;
+   }
+      this.TaskService.DeleteTask(taskId).subscribe(response => {
+        console.log("den valda tasken togs bort", response)
+      },    error => {
+        console.error('delete failed', error);
+      });
+    
+  }
+
 
   async GetAllTasks() {
     try {
@@ -91,9 +108,12 @@ export class CardComponent implements OnInit {
         error => {
           console.error('Post failed', error);
         });
+
+        this.TaskForm.reset();
     }
 
         this.GetAllTasks()
+
     }
 
 }

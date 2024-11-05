@@ -10,6 +10,7 @@ import { ITasks } from '../../core/models/TasksModel';
 export class TasksService {
 
 BoardId?:number;
+taskId?:number;
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +20,10 @@ BoardId?:number;
   getBoardId()
   {
    return this.BoardId;
+  }
+  setTaskId(id:number)
+  {
+   this.taskId = id;
   }
 
   GetAllTasks():Observable<ITasks[]>
@@ -31,5 +36,9 @@ BoardId?:number;
     console.log(body)
     console.log(Task)
     return this.http.post("http://localhost:5228/api/tasks/PostTask", body,{'headers':headers, withCredentials: true});
+  }
+
+  DeleteTask (taskId:number):Observable<any> {
+    return this.http.delete("http://localhost:5228/api/tasks/id?id=" + taskId ,{ withCredentials: true } );
   }
 }

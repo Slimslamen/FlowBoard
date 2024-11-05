@@ -59,6 +59,18 @@ export class CreateBoardComponent implements OnInit {
   ngOnInit(): void {
     this.getBoards();
     this.generateRandomImage();
+    this.getCurrentUser();
+  }
+    getCurrentUser() {
+    this.loginService.getUser().subscribe(
+    (user) => {
+      this.user = user;
+      console.log("Användaren hämtad"); 
+    },
+    (error) => {
+      console.error("Ett fel uppstod vid hämtning av användaren: ", error);
+    }
+  );
   }
   openCreate() {
     this.isOpen = !this.isOpen;

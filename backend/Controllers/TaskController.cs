@@ -27,7 +27,7 @@ public class TaskController(ITaskService taskService) : ControllerBase
     }
 
     
-    [HttpDelete("{id}")]
+    [HttpDelete("id")]
 
     public ActionResult<Tasks> DeleteById(int id)
     {
