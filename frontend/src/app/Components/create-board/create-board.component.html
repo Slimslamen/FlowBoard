@@ -1,12 +1,12 @@
 
 
 
-<main class="p-2 ">
+<main class="">
     <a routerLink="/Board" class=" cursor-pointer px-5 py-3 text-base font-medium text-center text-white ">
  <h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight
   text-seaBlue md:text-5xl lg:text-6xl ">Your current boards</h1>
  </a>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-5">
   @for (board of boards; track $index) {
     <div class="relative" (click)="NavigateToBoard(board.id)">
         <img class="h-auto max-w-full rounded-lg" [src]="SavedImg" alt="">
@@ -26,11 +26,11 @@
 </div>
 
 @if (isOpen) {
-<form class="p-5"
+<form class="mt-10 py-5 bg-gradient-to-r from-seaGreen to-seaBlue"
 [formGroup]="registerForm"
 (ngSubmit)="addBoard()">
 <h2 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight
-text-seaBlue md:text-5xl lg:text-6xl">Create a new board:</h2>
+text-white md:text-5xl lg:text-6xl">Create a new board:</h2>
   <!-- Board Name Input -->
   <div class=" m-5 grid items-end gap-6 mb-6 md:grid-cols-3"> 
     <div class="relative "> <!-- Center the input field container -->
@@ -38,7 +38,7 @@ text-seaBlue md:text-5xl lg:text-6xl">Create a new board:</h2>
         type="text"
         id="boardName"
         formControlName="boardName"
-        class="block w-full px-2.5 pb-1.5 pt-3 text-sm text-gray-900 bg-transparent rounded-lg border-gray-200 border-2 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        class="block w-full px-2.5 pb-1.5 pt-3 text-sm text-gray-900 yrounded-lg border-gray-200 border-2 appearance-none rounded-lg focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder=" "
       />
       <label
@@ -60,7 +60,7 @@ text-seaBlue md:text-5xl lg:text-6xl">Create a new board:</h2>
     </select>
 </div>
     <!-- Input-fält för varje card, baserat på valt antal -->
-   @for (card of cards; track $index) {
+<!--    @for (card of cards; track $index) {
       <div  class="relative">
         <input
           type="text"
@@ -76,7 +76,7 @@ text-seaBlue md:text-5xl lg:text-6xl">Create a new board:</h2>
           Card {{$index+1}}
         </label>
       </div>
-    }
+    } -->
     </div>
 
 </form>

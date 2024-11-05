@@ -1,5 +1,6 @@
 export interface ITasks {
-  id: number;
+  id?: number;
+  boardId?:number;
   state:string;
   taskName: string;
 }

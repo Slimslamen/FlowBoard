@@ -19,9 +19,7 @@ export class LoginService {
   postLoginUser = (user:ICurrentUser):Observable<any> => {
     const headers={'content-type': 'application/json'}
     const body=JSON.stringify(user);
-    console.log(body)
     this.signOutService.setCurrentUser(user);
-    console.log(user)
     return this.http.post(this.url, body,{'headers':headers, withCredentials: true});
   }
   getUser(): Observable<CurrentUser> {
