@@ -1,7 +1,7 @@
 import { ITasks } from "./TasksModel";
 
-export interface ITaskArray {
-    title: string;
+export interface ICard {
+    state: string;
     task: ITasks[] ;
   }
   

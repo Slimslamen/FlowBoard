@@ -1,10 +1,10 @@
 <div class="flex flex-col md:flex-row md:space-y-0 space-y-5 md:space-x-5 justify-center items-center">
   <div
-    *ngFor="let Tasks of TasksArray"
+    *ngFor="let Tasks of Cards"
     class="w-64 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 flex flex-col"
   >
     <h5 class="mb-3 text-base font-bold text-gray-900 md:text-xl">
-      {{Tasks.title}}
+      {{Tasks.state}}
     </h5>
     <div>
       <ul *ngFor="let item of Tasks.task" class="my-4 space-y-3 flex flex-col">
