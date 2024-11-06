@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ITasks } from '../../core/models/TasksModel';
@@ -9,11 +9,20 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ActivatedRoute } from '@angular/router';
 import { subscribe } from 'diagnostics_channel';
 import { error } from 'console';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, DragDropModule, CdkDropList, CdkDrag],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
 })
@@ -38,6 +47,8 @@ export class CardComponent implements OnInit {
       console.log('Test ID:', this.boardId);
     });
   }
+
+  
 
  async DeleteOneTask(taskId?:number) {
 if(taskId === undefined)
@@ -127,6 +138,19 @@ if(taskId === undefined)
        this.TaskForm.reset();
     }
 
+  }
+
+  drop(event: CdkDragDrop<any>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
 }

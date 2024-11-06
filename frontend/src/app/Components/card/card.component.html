@@ -1,14 +1,22 @@
-<div class="flex flex-col md:flex-row md:space-y-0 space-y-5 md:space-x-5 justify-center items-center">
-  @for (Tasks of Cards; track $index) {
+<div class="flex flex-col md:flex-row md:space-y-0 space-y-5 md:space-x-5 justify-center items-center"
+>
+  @for (Card of Cards; track $index) {
   <div
+  cdkDropList
+  [cdkDropListData]="Card.state"
     class="w-64 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 flex flex-col"
-  >
-    <h5 class="mb-3 text-base font-bold text-gray-900 md:text-xl">
-      {{Tasks.state}}
+    (cdkDropListDropped)="drop($event)">
+    
+    <h5 class="mb-3 text-base font-bold text-gray-900 md:text-xl"
+    >
+      {{Card.state}}
     </h5>
-    <div>
-      @for (item of Tasks.task; track $index) {
-        <ul class="my-4 space-y-3 flex flex-col">
+    <div
+    >
+      @for (item of Card.task; track $index) {
+        <ul class="my-4 space-y-3 flex flex-col"
+        cdkDrag>{{item}}
+        >
         <li (click)="DeleteOneTask(item.id)">
           <div
             href="#"
@@ -25,7 +33,7 @@
         </li>
       </ul>
     }
-      <form [formGroup]="TaskForm" (ngSubmit)="Submit(Tasks.state)" class="relative">
+      <form [formGroup]="TaskForm" (ngSubmit)="Submit(Card.state)" class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" 
         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" 
