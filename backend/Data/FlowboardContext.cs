@@ -17,8 +17,8 @@ public class FlowboardContext : IdentityDbContext<User>
     protected override void OnConfiguring(DbContextOptionsBuilder option)
     {
         // option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12Sand3457e5;Database=Flowboard;",
-        // option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
-         option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=MartaEstelle;Database=Flowboard;",
+        option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=Tvufgs!;Database=Flowboard;",
+         //option.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=MartaEstelle;Database=Flowboard;",
          option => option.EnableRetryOnFailure());
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
