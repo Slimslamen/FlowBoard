@@ -88,7 +88,8 @@ export class CardComponent implements OnInit {
     }
   }
 
-  Submit(state:string) {
+  async Submit(state:string) {
+
     if(this.TaskForm.valid)
     {
       const { taskName } = this.TaskForm.value;
@@ -99,21 +100,25 @@ export class CardComponent implements OnInit {
         boardId: this.boardId,
         state
       };
+      try 
+      {
+        
+     await firstValueFrom(this.TaskService.PostTask(newTask))
+          console.log('Post successfully:');
+          await this.GetAllTasks();
+        
+      }
+        
 
-      this.TaskService.PostTask(newTask).subscribe(
-        response => {
-          console.log('Post successfully:', response);
+        catch(error)
+        { 
+            console.error('Post failed', error)
+  
         }
-        ,
-        error => {
-          console.error('Post failed', error);
-        });
-
-        this.TaskForm.reset();
+    
+       this.TaskForm.reset();
     }
 
-        this.GetAllTasks()
-
-    }
+  }
 
 }
