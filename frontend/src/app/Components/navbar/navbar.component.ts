@@ -42,19 +42,19 @@ export class NavbarComponent  {
     )
   }
 
-  toggleHamburger = (e:Event) => {
-    e.preventDefault();
+  toggleHamburger = () => {
+
     this.isHamburgerOpen = !this.isHamburgerOpen;
     console.log(this.isHamburgerOpen); 
   };
-  closeHamburger(e:Event) {
-    e.preventDefault();
+  closeHamburger() {
+
     this.isHamburgerOpen = false; 
     this.isDropdownOpen = false;  
   }
 
-  toggleDropDown = (e:Event) => {
-    e.preventDefault();
+  toggleDropDown = () => {
+
     this.isDropdownOpen = !this.isDropdownOpen;
     console.log(this.isDropdownOpen); 
   };
