@@ -26,9 +26,9 @@ public class TaskService(ITaskRepo taskRepo, IMapper mapper) : ITaskService
         return _taskRepo.DeleteTask(id);
     }
 
-    public List<TaskRequestDto> GetAllUserTasks(int id)
+    public List<TaskResponseDTO> GetAllUserTasks(int id)
     {
      var userTasks = _taskRepo.GetAllUserTasks(id);
-        return _mapper.Map<List<TaskRequestDto>>(userTasks);
+        return _mapper.Map<List<TaskResponseDTO>>(userTasks);
     }
 }

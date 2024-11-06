@@ -6,7 +6,7 @@ namespace backend.Services.TaskFolder;
 public interface ITaskService
 {
     List<Tasks> GetAllTasks();
-    List<TaskRequestDto> GetAllUserTasks(int id);
+    List<TaskResponseDTO> GetAllUserTasks(int id);
     Tasks CreateNewTask(TaskRequestDto tasksRequestDto);
 
     Tasks? DeleteTask(int id);
