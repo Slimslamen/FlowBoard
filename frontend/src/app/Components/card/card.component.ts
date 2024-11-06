@@ -39,17 +39,25 @@ export class CardComponent implements OnInit {
     });
   }
 
-  DeleteOneTask(taskId?:number) {
-   if(taskId === undefined)
-   {
-    console.log("undefined")
-    return;
-   }
-      this.TaskService.DeleteTask(taskId).subscribe(response => {
-        console.log("den valda tasken togs bort", response)
-      },    error => {
+ async DeleteOneTask(taskId?:number) {
+if(taskId === undefined)
+{
+  return;
+}
+  try{
+    await firstValueFrom(this.TaskService.DeleteTask(taskId))
+      console.log("den valda tasken togs bort")
+     await this.GetAllTasks();
+  }
+  
+
+      catch(error) {
         console.error('delete failed', error);
-      });
+      }
+        
+      
+
+ 
     
   }
 
@@ -106,7 +114,7 @@ export class CardComponent implements OnInit {
      await firstValueFrom(this.TaskService.PostTask(newTask))
           console.log('Post successfully:');
           await this.GetAllTasks();
-        
+        console.log(this.Tasks)
       }
         
 

@@ -42,7 +42,7 @@ public class TaskController(ITaskService taskService) : ControllerBase
     }
         [HttpGet("GetUserTasks")]
         
-     public ActionResult<List<TaskRequestDto>> GetUserTasks(int id)
+     public ActionResult<List<TaskResponseDTO>> GetUserTasks(int id)
     {
         return _taskService.GetAllUserTasks(id);
     }
