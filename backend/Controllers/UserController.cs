@@ -1,4 +1,5 @@
 using backend.DTO.AuthDtos;
+using backend.DTO.BoardDTO;
 using backend.Models;
 using backend.Services;
 using backend.Services.UserFolder;
@@ -15,8 +16,20 @@ public class UserController(IUserService service) : ControllerBase
 
     [HttpGet("GetAllUsers")]
     [Authorize(Roles = "admin")]
-    public ActionResult<List<UserDto>>GetAllUsers()
-    { 
-        return  _service.GetUsers();
+    public ActionResult<List<UserDto>> GetAllUsers()
+    {
+        return _service.GetUsers();
+    }
+    [HttpGet("GetUserBoard")]
+    [Authorize(Roles = "admin")]
+    public ActionResult<List<BoardResponseDTO>> GetUserBoard(string id)
+    {
+        return _service.GetUserBoard(id);
+    }   
+    [HttpDelete("DeleteUser")]
+    [Authorize(Roles = "admin")]
+    public ActionResult<List<UserDto>> DeleteUser()
+    {
+        return _service.GetUsers();
     }
 }

@@ -1,5 +1,6 @@
 using AutoMapper;
 using backend.DTO.AuthDtos;
+using backend.DTO.BoardDTO;
 using backend.Models;
 using backend.Repository.Users;
 
@@ -9,6 +10,14 @@ public class UserService(IUserRepo repo, IMapper mapper) : IUserService
 {
     private readonly IUserRepo _repo = repo;
     private readonly IMapper _mapper = mapper;
+
+    public List<BoardResponseDTO> GetUserBoard(string id)
+    {
+        List<Board> board = _repo.GetUserBoards(id);
+        List<BoardResponseDTO> newBoard = _mapper.Map<List<BoardResponseDTO>>(board);
+        return newBoard;
+    }
+
     public List<UserDto> GetUsers()
     {
         List<User> user = _repo.GetAllUsers();
