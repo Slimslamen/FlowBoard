@@ -32,6 +32,9 @@ import { IOneBoard } from '../../core/models/OneBoard';
    getAllUserBoards(): Observable<IBoards[]>{
      return this.http.get<IBoards[]>("http://localhost:5228/api/boards?userId=" + this.userId, { withCredentials: true })
    }
+   FetchUserBoardsForAdmin(userId:string): Observable<IBoards[]>{
+    return this.http.get<IBoards[]>("http://localhost:5228/api/boards?userId=" + userId, { withCredentials: true })
+  }
    getUserBoard(): Observable<IOneBoard>{
     return this.http.get<IOneBoard>("http://localhost:5228/api/boards/id?id=" + this.BoardId, { withCredentials: true })
   }

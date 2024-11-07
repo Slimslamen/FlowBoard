@@ -20,16 +20,18 @@ public class UserController(IUserService service) : ControllerBase
     {
         return _service.GetUsers();
     }
+
     [HttpGet("GetUserBoard")]
     [Authorize(Roles = "admin")]
     public ActionResult<List<BoardResponseDTO>> GetUserBoard(string id)
     {
         return _service.GetUserBoard(id);
     }   
+    
     [HttpDelete("DeleteUser")]
     [Authorize(Roles = "admin")]
-    public ActionResult<List<UserDto>> DeleteUser()
+    public ActionResult<User?> DeleteUser(string userId)
     {
-        return _service.GetUsers();
+        return _service.DeleteUser(userId);
     }
 }

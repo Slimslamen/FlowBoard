@@ -19,4 +19,14 @@ public class UserRepo(FlowboardContext db) : IUserRepo
     {
         return _db.Customers.ToList();
     }
+
+    public User? DeleteUser(string userId)
+    {
+        User? user = _db.Customers.FirstOrDefault(user => user.Id == userId);
+        if(user != null)
+        _db.Customers.Remove(user);
+        _db.SaveChanges();
+        return user;
+
+    }
 }

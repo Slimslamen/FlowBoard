@@ -41,6 +41,7 @@ export class CreateBoardComponent implements OnInit {
   cardCount: number = 0; // Antalet cards som användaren vill skapa
   cards: string[] = []; // En array för att hålla cardnamn
   isOpen: boolean = false;
+  
   registerForm: FormGroup;
   loginService: LoginService = inject(LoginService);
   boardService: BoardsService = inject(BoardsService);

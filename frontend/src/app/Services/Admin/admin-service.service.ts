@@ -14,7 +14,14 @@ export class AdminServiceService {
   GetAllUsers():Observable<CurrentUser[]>{
     return this.http.get<CurrentUser[]>("http://localhost:5228/api/users/GetAllUsers", {withCredentials:true})
   }
-  GetUserBoards(userId:string):Observable<IBoards[]>{
-    return this.http.get<IBoards[]>("http://localhost:5228/api/users/GetUserBoard?userId="+userId, {withCredentials:true})
+  GetUserBoards(id:string):Observable<IBoards[]>{
+    return this.http.get<IBoards[]>("http://localhost:5228/api/users/GetUserBoard?id="+id, {withCredentials:true})
   }
+  DeleteUser(userId:string):Observable<CurrentUser>{
+    const headers={'content-type': 'application/json',
+      'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
+    }
+    return this.http.delete<CurrentUser>("http://localhost:5228/api/users/DeleteUser?userId="+ userId,{'headers':headers, withCredentials: true})
+  }
+  
 }

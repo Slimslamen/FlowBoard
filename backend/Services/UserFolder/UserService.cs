@@ -11,6 +11,11 @@ public class UserService(IUserRepo repo, IMapper mapper) : IUserService
     private readonly IUserRepo _repo = repo;
     private readonly IMapper _mapper = mapper;
 
+    public User? DeleteUser(string userId)
+    { 
+        return _repo.DeleteUser(userId);
+    }
+
     public List<BoardResponseDTO> GetUserBoard(string id)
     {
         List<Board> board = _repo.GetUserBoards(id);

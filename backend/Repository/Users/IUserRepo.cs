@@ -7,4 +7,5 @@ public interface IUserRepo
 {
     List<User> GetAllUsers();
     List<Board> GetUserBoards(string id);
+    User? DeleteUser(string userId);
 }
