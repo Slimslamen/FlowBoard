@@ -1,12 +1,15 @@
 using System.Security.Claims;
 using backend.Data;
+using backend.DTO.AuthDtos;
 using backend.Models;
 using backend.Repository;
 using backend.Repository.Boards;
 using backend.Repository.Task;
+using backend.Repository.Users;
 using backend.Services;
 using backend.Services.BoardFolder;
 using backend.Services.TaskFolder;
+using backend.Services.UserFolder;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 
@@ -29,6 +32,8 @@ builder.Services.AddScoped<IBoardRepo, BoardRepo>();
 builder.Services.AddScoped<IBoardService, BoardService>();
 builder.Services.AddScoped<ITaskRepo, TaskRepo>();
 builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
 
 builder.Services.AddIdentityCore<User>()
 .AddRoles<IdentityRole>()

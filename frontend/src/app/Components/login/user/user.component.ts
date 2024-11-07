@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../Services/login/login.service'; 
+import { LoginService } from '../../../Services/login/login.service';
 import { CommonModule } from '@angular/common';
 import { CurrentUser, ICurrentUser } from '../../../core/models/user.interface';
 import { firstValueFrom } from 'rxjs';
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   loginForm: FormGroup;
   user?: CurrentUser;
 
-  IsGood : boolean = true;
+  IsGood: boolean = true;
 
   private LoginService: LoginService = inject(LoginService);
   private BoardsService: BoardsService = inject(BoardsService);
@@ -32,31 +32,35 @@ export class UserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {}
 
-  loginUser(){
+  loginUser() {
     if (this.loginForm.valid) {
-      const {username, password} = this.loginForm.value;
+      const { username, password } = this.loginForm.value;
 
-    const newUser: ICurrentUser = {
-    username, password
-  };
-  this.LoginService.postLoginUser(newUser).subscribe(
-    response => {
-      console.log('Post successfully:', response);
-      this.BoardsService.setUserId(response.userId);
-      this.router.navigate(['/createBoard',response.userId])
-      this.IsGood = true;
-    },
-    error => {
-      console.error('Post failed', error);
-      this.IsGood = false;
+      const newUser: ICurrentUser = {
+        username,
+        password,
+      };
+      this.LoginService.postLoginUser(newUser).subscribe(
+        (response) => {
+          console.log('Post successfully:', response);
+          this.BoardsService.setUserId(response.userId);
+          if (response.roles == 'user')
+            this.router.navigate(['/createBoard', response.userId]);
+          else if (response.roles == 'admin')
+            this.router.navigate(['/AdminBoard', response.userId]);
+          this.IsGood = true;
+        },
+        (error) => {
+          console.error('Post failed', error);
+          this.IsGood = false;
+        }
+      );
     }
-  );
-}
-}
+  }
 }

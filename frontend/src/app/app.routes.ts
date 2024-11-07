@@ -5,6 +5,7 @@ import { UserComponent } from './Components/login/user/user.component';
 import { HeroPageComponent } from './Components/hero-page/hero-page.component';
 import { BoardComponent } from './Components/board/board.component';
 import { CreateBoardComponent } from './Components/create-board/create-board.component';
+import { AdminBoardComponent } from './Components/admin-board/admin-board.component';
 
 export const routes: Routes = [
 
@@ -37,6 +38,10 @@ export const routes: Routes = [
         path: 'createBoard/:userId',
         component: CreateBoardComponent,
         title: "Create board"
-
+    },
+    {
+        path: 'AdminBoard/:userId',
+        component: AdminBoardComponent,
+        title: "Admin board"
     }
 ];

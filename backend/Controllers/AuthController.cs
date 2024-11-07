@@ -53,6 +53,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
         
         _signInManager.AuthenticationScheme = IdentityConstants.ApplicationScheme;
         var result = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, false);
+         List<string> roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
         string id = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unknown";
         if (!result.Succeeded)
         {
@@ -60,7 +61,7 @@ public class AuthController(IMapper mapper, UserManager<User> userManager, SignI
         }
         else
         {
-            return new LoginResponseDto(id);
+            return new LoginResponseDto(id, roles);
         }
     }
     [HttpGet("CurrentUser")]
