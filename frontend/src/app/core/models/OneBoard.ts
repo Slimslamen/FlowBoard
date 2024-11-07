@@ -1,5 +1,6 @@
 export interface IOneBoard
 {
-    id:number;
+    id?:number;
     name: string;
+    userId?:string;
 }

@@ -27,7 +27,7 @@ public class BoardController(IBoardService service) : ControllerBase
         return _service.CreateNewBoard(boardRequestDto);
     }
 
-    [HttpDelete("Delete board")]
+    [HttpDelete("DeleteBoard")]
 
     public ActionResult<Board> DeleteById(int id)
     {

@@ -19,6 +19,10 @@ import { IBoards } from '../../core/models/boards.interface';
 import { BoardsService } from '../../Services/boards/boards.service';
 import { Router } from '@angular/router';
 import { TasksService } from '../../Services/CardTasks/tasks.service';
+import { IOneBoard } from '../../core/models/OneBoard';
+import { error } from 'console';
+import { firstValueFrom } from 'rxjs';
+import { SignOutService } from '../../Services/signout/sign-out.service';
 
 @Component({
   selector: 'app-create-board',
@@ -41,6 +45,7 @@ export class CreateBoardComponent implements OnInit {
   loginService: LoginService = inject(LoginService);
   boardService: BoardsService = inject(BoardsService);
   TaskService: TasksService = inject(TasksService);
+  SignOutService: SignOutService = inject(SignOutService);
   user?: CurrentUser;
   boards?: IBoards[];
   Images: string[] = [
@@ -48,37 +53,53 @@ export class CreateBoardComponent implements OnInit {
     '/assets/Image2.jpg',
     '/assets/Image3.jpg',
     '/assets/Image4.jpg',
-    '/assets/Image5.jpg'
+    '/assets/Image5.jpg',
   ];
 
-
-  constructor(private formBuilder: FormBuilder, private router:Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.registerForm = this.formBuilder.group({
       boardName: ['', [Validators.required]],
-      cardName: ['', [Validators.required, Validators.email]],
     });
   }
-  
+
   ngOnInit(): void {
     this.getBoards();
     this.getCurrentUser();
   }
 
-    getCurrentUser() {
+  getCurrentUser() {
     this.loginService.getUser().subscribe(
-    (user) => {
-      this.user = user;
-      console.log("Användaren hämtad"); 
-    },
-    (error) => {
-      console.error("Ett fel uppstod vid hämtning av användaren: ", error);
-    }
-  );
+      (user) => {
+        this.user = user;
+        console.log('Användaren hämtad');
+      },
+      (error) => {
+        console.error('Ett fel uppstod vid hämtning av användaren: ', error);
+      }
+    );
   }
   openCreate() {
     this.isOpen = !this.isOpen;
   }
-  addBoard() {}
+  async addBoard(e: Event) {
+    e.preventDefault();
+    if (this.registerForm.valid) {
+      const { boardName } = this.registerForm.value;
+
+      const newBoard: IOneBoard = {
+        name: boardName,
+        userId: this.boardService.getUserId(),
+      };
+      try {
+        await firstValueFrom(this.boardService.PostBoard(newBoard));
+        console.log('Post successfully:');
+        this.getBoards();
+        this.registerForm.reset();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   generateRandomImage() {
     const Randomnmb = Math.floor(Math.random() * this.Images.length);
@@ -86,8 +107,8 @@ export class CreateBoardComponent implements OnInit {
   }
   NavigateToBoard(id: number) {
     this.boardService.setBoardId(id);
-    this.TaskService.setBoardId(id)
-    this.router.navigate(['/Board',id])
+    this.TaskService.setBoardId(id);
+    this.router.navigate(['/Board', id]);
   }
 
   getBoards() {
@@ -101,11 +122,16 @@ export class CreateBoardComponent implements OnInit {
       }
     );
   }
-
-  updateCardCount(event: Event) {
-    const target = event.target as HTMLSelectElement; // Typkonvertering
-    const count = Number(target.value); // Hämta värdet som ett nummer
-    this.cardCount = count;
-    this.cards = Array(count).fill(''); // Initiera arrayen med antal tomma element
+  async RemoveBoard(id: number) {
+    if (id === undefined) {
+      return;
+    }
+    try {
+      await firstValueFrom(this.boardService.DeleteBoard(id));
+      console.log('den valda tasken togs bort');
+      await this.getBoards();
+    } catch (error) {
+      console.error('delete failed', error);
+    }
   }
 }

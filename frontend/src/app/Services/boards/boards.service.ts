@@ -17,9 +17,13 @@ import { IOneBoard } from '../../core/models/OneBoard';
    setUserId(id:string){
     this.userId = id;
    }
-   getUserId()
+   getBoarId()
    {
     return this.BoardId;
+   }
+   getUserId()
+   {
+    return this.userId;
    }
    setBoardId(id:number){
     this.BoardId = id;
@@ -31,5 +35,16 @@ import { IOneBoard } from '../../core/models/OneBoard';
    getUserBoard(): Observable<IOneBoard>{
     return this.http.get<IOneBoard>("http://localhost:5228/api/boards/id?id=" + this.BoardId, { withCredentials: true })
   }
-
+  PostBoard = (Board:IOneBoard):Observable<any> => {
+    const headers={'content-type': 'application/json'}
+    const body=JSON.stringify(Board);
+    console.log(body)
+    return this.http.post("http://localhost:5228/api/boards/PostBoard", body,{'headers':headers, withCredentials: true});
+  }
+  DeleteBoard(BoardId:number):Observable<any> {
+    const headers={'content-type': 'application/json',
+      'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
+    }
+    return this.http.delete("http://localhost:5228/api/boards/DeleteBoard?id=" + BoardId,{'headers':headers, withCredentials: true});
+  }
  }

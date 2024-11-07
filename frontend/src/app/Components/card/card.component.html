@@ -2,7 +2,8 @@
   @for (Card of Cards; track $index) {
   <div
     cdkDropList
-    #2="cdkDropList"
+    #Cardid="cdkDropList"
+    id={{Card.id}}
     [cdkDropListData]="Tasks"
     [cdkDropListConnectedTo]="[Card.id]"
     class="w-64 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 flex flex-col"
@@ -16,10 +17,11 @@
       <ul class="my-4 space-y-3 flex flex-col">
         <li (click)="DeleteOneTask(item.id)">
           <div
+            cdkDrag
             href="#"
             class="list-none flex justify-between flex-nowrap p-3 text-base font-semibold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow"
           >
-            <span class="flex-1 ms-3 whitespace-nowrap" cdkDrag>{{item.taskName}}</span>
+            <span class="flex-1 ms-3 whitespace-nowrap">{{item.taskName}}</span>
 
             <span class="flex">
               <svg

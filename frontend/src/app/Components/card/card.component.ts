@@ -135,6 +135,8 @@ export class CardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>) {
+    console.log(event);
+    
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
