@@ -36,7 +36,7 @@ export class AdminBoardComponent implements OnInit {
   }
   async GetUsers() {
     try {
-      const res = await firstValueFrom(this.AdminService.GetAllUsers());
+      const res = await firstValueFrom(this.AdminService.GetAllUsersForAdmin());
       this.Users = res;
 
       console.log('Post Succesfully', res);
@@ -50,7 +50,7 @@ export class AdminBoardComponent implements OnInit {
       return;
     }
     try {
-      await firstValueFrom(this.AdminService.DeleteUser(id))
+      await firstValueFrom(this.AdminService.DeleteUserForAdmin(id))
       console.log("Successfully");
       await this.GetUsers();
       
@@ -64,7 +64,7 @@ export class AdminBoardComponent implements OnInit {
   async GoToUserBoard(id: string, index:number) {
     this.Toggle = !this.Toggle;
     try {
-      const res = await firstValueFrom(this.AdminService.GetUserBoards(id));
+      const res = await firstValueFrom(this.AdminService.GetUserBoardsForAdmin(id));
       this.Boards = res;
       console.log(res);
       this.FindUser(id)

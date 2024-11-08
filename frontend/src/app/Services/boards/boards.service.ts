@@ -14,37 +14,39 @@ import { IOneBoard } from '../../core/models/IOneBoard';
 
    constructor(private http: HttpClient) { }
 
-   setUserId(id:string){
+  setUserId(id:string){
     this.userId = id;
-   }
-   getBoarId()
+  }
+  getUserId()
+  {
+   return this.userId;
+  }
+
+   getBoardId()
    {
     return this.BoardId;
-   }
-   getUserId()
-   {
-    return this.userId;
    }
    setBoardId(id:number){
     this.BoardId = id;
    }
 
-   getAllUserBoards(): Observable<IBoards[]>{
+  getAllUserBoards(): Observable<IBoards[]>{
      return this.http.get<IBoards[]>("http://localhost:5228/api/boards?userId=" + this.userId, { withCredentials: true })
-   }
-   FetchUserBoardsForAdmin(userId:string): Observable<IBoards[]>{
+  }
+  FetchUserBoardsForAdmin(userId:string): Observable<IBoards[]>{
     return this.http.get<IBoards[]>("http://localhost:5228/api/boards?userId=" + userId, { withCredentials: true })
   }
-   getUserBoard(): Observable<IOneBoard>{
+  getOneUserBoard(): Observable<IOneBoard>{
     return this.http.get<IOneBoard>("http://localhost:5228/api/boards/id?id=" + this.BoardId, { withCredentials: true })
   }
+
   PostBoard = (Board:IOneBoard):Observable<any> => {
     const headers={'content-type': 'application/json'}
     const body=JSON.stringify(Board);
     console.log(body)
     return this.http.post("http://localhost:5228/api/boards/PostBoard", body,{'headers':headers, withCredentials: true});
   }
-  DeleteBoard(BoardId:number):Observable<any> {
+  DeleteBoard = (BoardId:number):Observable<any> => {
     const headers={'content-type': 'application/json',
       'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
     }

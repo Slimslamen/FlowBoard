@@ -19,7 +19,7 @@ constructor(private router:Router)
 
 
 GoToBoards() {
-  this.Id = this.BoardService.getBoarId()
+  this.Id = this.BoardService.getBoardId()
   this.router.navigate(['/createBoard',this.Id])
 }
 

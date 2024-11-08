@@ -11,13 +11,13 @@ export class AdminServiceService {
 
   constructor(private http:HttpClient) { }
 
-  GetAllUsers():Observable<IAccessUser[]>{
+  GetAllUsersForAdmin():Observable<IAccessUser[]>{
     return this.http.get<IAccessUser[]>("http://localhost:5228/api/users/GetAllUsers", {withCredentials:true})
   }
-  GetUserBoards(id:string):Observable<IBoards[]>{
+  GetUserBoardsForAdmin(id:string):Observable<IBoards[]>{
     return this.http.get<IBoards[]>("http://localhost:5228/api/users/GetUserBoard?id="+id, {withCredentials:true})
   }
-  DeleteUser(userId:string):Observable<IAccessUser>{
+  DeleteUserForAdmin(userId:string):Observable<IAccessUser>{
     const headers={'content-type': 'application/json',
       'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
     }

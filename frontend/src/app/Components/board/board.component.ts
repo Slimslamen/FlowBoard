@@ -45,7 +45,7 @@ ngOnInit(): void {
   getBoard()
   {
 
-    this.BoardService.getUserBoard().subscribe(
+    this.BoardService.getOneUserBoard().subscribe(
       (board) => {
         this.OneBoard = board;
       },
