@@ -38,7 +38,6 @@ import { SignOutService } from '../../Services/signout/sign-out.service';
   styleUrl: './create-board.component.css',
 })
 export class CreateBoardComponent implements OnInit {
-  cardCount: number = 0; // Antalet cards som användaren vill skapa
   cards: string[] = []; // En array för att hålla cardnamn
   isOpen: boolean = false;
   
@@ -86,10 +85,10 @@ export class CreateBoardComponent implements OnInit {
     e.preventDefault();
     if (this.registerForm.valid) {
       const { boardName } = this.registerForm.value;
-
       const newBoard: IOneBoard = {
         name: boardName,
         userId: this.boardService.getUserId(),
+        imageSrc: this.generateRandomImage()
       };
       try {
         await firstValueFrom(this.boardService.PostBoard(newBoard));
