@@ -44,10 +44,10 @@ builder.Services.AddCors( options =>
 {
     options.AddDefaultPolicy(policy => 
     {
-        policy.WithOrigins("http://localhost:5500","http://localhost:4200", "http://localhost:5228" );
-        policy.AllowAnyHeader();
-        policy.AllowAnyMethod();
-        policy.AllowCredentials();
+        policy.WithOrigins("http://localhost:5500","http://localhost:4200", "http://localhost:5228" )
+        .WithHeaders("Content-Type", "Authorization")
+        .WithMethods("GET","POST","DELETE", "PATCH")
+        .AllowCredentials();
     });
 });
 

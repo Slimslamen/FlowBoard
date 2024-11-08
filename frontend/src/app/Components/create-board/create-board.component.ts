@@ -20,7 +20,6 @@ import { SignOutService } from '../../Services/signout/sign-out.service';
   styleUrl: './create-board.component.css',
 })
 export class CreateBoardComponent implements OnInit {
-  cardCount: number = 0; // Antalet cards som användaren vill skapa
   cards: string[] = []; // En array för att hålla cardnamn
   isOpen: boolean = false;
   
@@ -54,13 +53,11 @@ export class CreateBoardComponent implements OnInit {
     this.loginService.getUser().subscribe(
       (user) => {
         this.user = user;
-        console.log('Användaren hämtad');
       },
       (error) => {
         console.error('Ett fel uppstod vid hämtning av användaren: ', error);
-      }
-    );
-  }
+      });}
+
   openCreate() {
     this.isOpen = !this.isOpen;
   }
@@ -68,14 +65,13 @@ export class CreateBoardComponent implements OnInit {
     e.preventDefault();
     if (this.registerForm.valid) {
       const { boardName } = this.registerForm.value;
-
       const newBoard: IOneBoard = {
         name: boardName,
         userId: this.boardService.getUserId(),
+        imageSrc: this.generateRandomImage()
       };
       try {
         await firstValueFrom(this.boardService.PostBoard(newBoard));
-        console.log('Post successfully:');
         this.getBoards();
         this.registerForm.reset();
       } catch (error) {
@@ -98,7 +94,6 @@ export class CreateBoardComponent implements OnInit {
     this.boardService.getAllUserBoards().subscribe(
       (board) => {
         this.boards = board;
-        console.log(board);
       },
       (error) => {
         console.log('Not working');
@@ -111,7 +106,6 @@ export class CreateBoardComponent implements OnInit {
     }
     try {
       await firstValueFrom(this.boardService.DeleteBoard(id));
-      console.log('den valda tasken togs bort');
       await this.getBoards();
     } catch (error) {
       console.error('delete failed', error);

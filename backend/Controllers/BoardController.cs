@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers;
 [ApiController]
 [Route("api/boards")]
+[Consumes("application/json")]
+[Produces("application/json")]
 public class BoardController(IBoardService service) : ControllerBase
 {
     public readonly IBoardService _service = service;

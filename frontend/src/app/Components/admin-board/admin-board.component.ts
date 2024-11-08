@@ -56,9 +56,7 @@ export class AdminBoardComponent implements OnInit {
       
     } catch (error) {
       console.log(error);
-      
     }
-   
   }
 
   async GoToUserBoard(id: string, index:number) {
@@ -66,7 +64,6 @@ export class AdminBoardComponent implements OnInit {
     try {
       const res = await firstValueFrom(this.AdminService.GetUserBoardsForAdmin(id));
       this.Boards = res;
-      console.log(res);
       this.FindUser(id)
       this.ButtonIndex = index
     } catch (error) {

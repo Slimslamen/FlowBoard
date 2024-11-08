@@ -56,7 +56,6 @@ export class CardComponent implements OnInit {
     this.GetAllTasks();
     this.route.params.subscribe((params) => {
       this.boardId = params['id']; // Access the 'id' parameter from the URL
-      console.log('Test ID:', this.boardId);
     });
   }
 
@@ -66,12 +65,10 @@ export class CardComponent implements OnInit {
     }
     try {
       await firstValueFrom(this.TaskService.DeleteTask(taskId));
-      console.log('den valda tasken togs bort');
       await this.GetAllTasks();
     } catch (error) {
       console.error('delete failed', error);
-    }
-  }
+    }}
 
   async GetAllTasks() {
     try {
@@ -105,8 +102,6 @@ export class CardComponent implements OnInit {
           task: this.Tasks.filter((task) => task.state === 'Pause'),
         },
       ];
-
-      console.log('Tasks sorted successfully:', this.Cards);
     } catch (error) {
       console.error('Post failed', error);
     }
@@ -123,9 +118,7 @@ export class CardComponent implements OnInit {
       };
       try {
         await firstValueFrom(this.TaskService.PostTask(newTask));
-        console.log('Post successfully:');
         await this.GetAllTasks();
-        console.log(this.Tasks);
       } catch (error) {
         console.error('Post failed', error);
       }
@@ -135,8 +128,6 @@ export class CardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>) {
-    console.log(event);
-    
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
