@@ -59,16 +59,12 @@ export class CreateAccountComponent implements OnInit {
  
       try {
         const response = await firstValueFrom(this.registerService.postUsers(newUser));
-        console.log('Post successful:', response);
           this.router.navigate(['/user']);
         
       } catch (error: any) {
         this.errorList = error.error;
         console.error('Post failed:', error.error);
-        
-      }
-    }
-  }
+        }}}
 
 /*   adminFunction(ev: any) {
     console.log(ev.target.checked);

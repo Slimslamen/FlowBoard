@@ -36,26 +36,19 @@ ngOnInit(): void {
     this.loginService.getUser().subscribe(
     (user) => {
       this.CurrentUser = user;
-      console.log("Användaren hämtad"); 
     },
     (error) => {
       console.error("Ett fel uppstod vid hämtning av användaren: ", error);
-    }
-  );
-  }
+    });}
   
   getBoard()
   {
-
     this.BoardService.getUserBoard().subscribe(
       (board) => {
         this.OneBoard = board;
       },
       (error) => {
         console.log('Not working');
-      }
-    );
-  }
+      });}
 
-  
 }

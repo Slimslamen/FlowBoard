@@ -30,33 +30,25 @@ export class NavbarComponent  {
   {
     this.user = this.signOutService.getCurrentUser()
     if(!this.user)
-      console.error("Not user is signed in")
     if(this.user)
     this.signOutService.postSignOut(this.user).subscribe(
       (response) => {
-        console.log('Succesfully logged out:', response);
       },
       (error) => {
         console.error('Post failed', error);
-      }
-    )
-  }
+      })}
 
   toggleHamburger = () => {
-
     this.isHamburgerOpen = !this.isHamburgerOpen;
-    console.log(this.isHamburgerOpen); 
   };
-  closeHamburger() {
 
+  closeHamburger() {
     this.isHamburgerOpen = false; 
     this.isDropdownOpen = false;  
   }
 
   toggleDropDown = () => {
-
     this.isDropdownOpen = !this.isDropdownOpen;
-    console.log(this.isDropdownOpen); 
   };
 
 }
