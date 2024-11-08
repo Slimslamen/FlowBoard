@@ -1,4 +1,4 @@
-<main class="flex flex-col my-5">
+<main class="flex flex-col mt-5">
   <h1
     class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-seaBlue md:text-5xl lg:text-6xl cursor-default"
   >
@@ -48,9 +48,10 @@
   >
     {{User?.username}}
   </h1>
+  <div class="w-full">
+  <div class="grid grid-cols-3 gap-12 mx-auto w-4/5 shadow-lg rounded-lg pt-10 px-20">
   @for (board of Boards; track $index) {
-  <div>
-    <div class="relative h-40 w-40">
+    <div class="relative h-60 w-60 space-y-1">
       <img
         class="h-auto max-w-full rounded-lg"
         src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2103&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -60,6 +61,8 @@
         >{{board.name}}
       </span>
     </div>
-  </div>
-  } }
+  } 
+</div>
+</div>
+}
 </main>

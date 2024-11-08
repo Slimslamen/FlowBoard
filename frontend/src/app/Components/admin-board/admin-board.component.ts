@@ -17,7 +17,7 @@ export class AdminBoardComponent implements OnInit {
   Users?: IAccessUser[] = [];
   User?:IAccessUser;
   ButtonIndex?:number;
-  Boards?: IBoards[] = [];
+  Boards: IBoards[] = [];
   text:string = "";
   Toggle: boolean = false;
 
