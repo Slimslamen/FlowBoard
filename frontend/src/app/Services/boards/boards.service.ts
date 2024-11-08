@@ -1,8 +1,8 @@
  import { HttpClient } from '@angular/common/http';
  import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBoards } from '../../core/models/boards.interface';
-import { IOneBoard } from '../../core/models/OneBoard';
+import { IBoards } from '../../core/models/IBoards';
+import { IOneBoard } from '../../core/models/IOneBoard';
 
  @Injectable({
    providedIn: 'root'

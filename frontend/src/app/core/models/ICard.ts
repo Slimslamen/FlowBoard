@@ -1,4 +1,4 @@
-import { ITasks } from "./TasksModel";
+import { ITasks } from "./ITasks";
 
 export interface ICard {
     id:string;

@@ -3,12 +3,10 @@ import { CardComponent } from '../card/card.component';
 import { RouterModule } from '@angular/router';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { SignOutService } from '../../Services/signout/sign-out.service';
-import { CurrentUser, ICurrentUser } from '../../core/models/user.interface';
-import { IBoards } from '../../core/models/boards.interface';
+import { IAccessUser } from '../../core/models/user.interface';
 import { LoginService } from '../../Services/login/login.service';
 import { BoardsService } from '../../Services/boards/boards.service';
-import { IOneBoard } from '../../core/models/OneBoard';
-// import { BoardsService } from '../../Services/boards/boards.service';
+import { IOneBoard } from '../../core/models/IOneBoard';
 
 @Component({
   selector: 'app-board',
@@ -18,7 +16,7 @@ import { IOneBoard } from '../../core/models/OneBoard';
   styleUrl: './board.component.css',
 })
 export class BoardComponent implements OnInit {
-  CurrentUser?: CurrentUser;
+  CurrentUser?: IAccessUser;
  
 
   OneBoard?: IOneBoard;

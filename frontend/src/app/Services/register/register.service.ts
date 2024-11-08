@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { User } from '../../core/models/user.interface'; 
+import { ICreateUser } from '../../core/models/user.interface'; 
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class RegisterService {
   url =" http://localhost:5228/api/auth/";
 
 
-  postUsers = (user:User):Observable<any> => {
+  postUsers = (user:ICreateUser):Observable<any> => {
     const headers={'content-type': 'application/json'}
     const body=JSON.stringify(user);
     console.log(body)

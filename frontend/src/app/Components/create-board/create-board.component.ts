@@ -1,39 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, RouterModule } from '@angular/router';
 import { LoginService } from '../../Services/login/login.service';
-import {
-  CurrentUser,
-  ICurrentUser,
-  User,
-} from '../../core/models/user.interface';
-
-import { IBoards } from '../../core/models/boards.interface';
+import { IAccessUser, ICurrentUser, ICreateUser } from '../../core/models/user.interface';
+import { IBoards } from '../../core/models/IBoards';
 import { BoardsService } from '../../Services/boards/boards.service';
 import { Router } from '@angular/router';
 import { TasksService } from '../../Services/CardTasks/tasks.service';
-import { IOneBoard } from '../../core/models/OneBoard';
-import { error } from 'console';
+import { IOneBoard } from '../../core/models/IOneBoard';
 import { firstValueFrom } from 'rxjs';
 import { SignOutService } from '../../Services/signout/sign-out.service';
 
 @Component({
   selector: 'app-create-board',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-  ],
+  imports: [ CommonModule, FormsModule, RouterModule, ReactiveFormsModule ],
   templateUrl: './create-board.component.html',
   styleUrl: './create-board.component.css',
 })
@@ -47,7 +29,7 @@ export class CreateBoardComponent implements OnInit {
   boardService: BoardsService = inject(BoardsService);
   TaskService: TasksService = inject(TasksService);
   SignOutService: SignOutService = inject(SignOutService);
-  user?: CurrentUser;
+  user?: IAccessUser;
   boards?: IBoards[];
   Images: string[] = [
     '/assets/Image1.jpg',

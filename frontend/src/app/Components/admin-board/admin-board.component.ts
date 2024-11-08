@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AdminServiceService } from '../../Services/Admin/admin-service.service';
-import { first, firstValueFrom } from 'rxjs';
-import { CurrentUser } from '../../core/models/user.interface';
+import { firstValueFrom } from 'rxjs';
+import { IAccessUser } from '../../core/models/user.interface';
 import { BoardsService } from '../../Services/boards/boards.service';
-import { IBoards } from '../../core/models/boards.interface';
+import { IBoards } from '../../core/models/IBoards';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,8 +14,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-board.component.css',
 })
 export class AdminBoardComponent implements OnInit {
-  Users?: CurrentUser[] = [];
-  User?:CurrentUser;
+  Users?: IAccessUser[] = [];
+  User?:IAccessUser;
   ButtonIndex?:number;
   Boards?: IBoards[] = [];
   text:string = "";

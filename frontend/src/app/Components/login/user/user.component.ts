@@ -9,8 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from '../../../Services/login/login.service';
 import { CommonModule } from '@angular/common';
-import { CurrentUser, ICurrentUser } from '../../../core/models/user.interface';
-import { firstValueFrom } from 'rxjs';
+import { IAccessUser, ICurrentUser } from '../../../core/models/user.interface';
 import { BoardsService } from '../../../Services/boards/boards.service';
 
 @Component({
@@ -22,7 +21,7 @@ import { BoardsService } from '../../../Services/boards/boards.service';
 })
 export class UserComponent implements OnInit {
   loginForm: FormGroup;
-  user?: CurrentUser;
+  user?: IAccessUser;
 
   IsGood: boolean = true;
 

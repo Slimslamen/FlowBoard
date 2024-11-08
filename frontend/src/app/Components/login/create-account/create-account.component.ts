@@ -1,13 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { User } from '../../../core/models/user.interface';
-import { FormBuilder,FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
+import { ICreateUser } from '../../../core/models/user.interface';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterService } from '../../../Services/register/register.service';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { IError } from '../../../core/models/IError.interface';
-import { validateHeaderValue } from 'http';
+import { IError } from '../../../core/models/IError';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 @Component({
   selector: 'app-create-account',
@@ -21,16 +19,15 @@ export class CreateAccountComponent implements OnInit {
   private registerService: RegisterService = inject(RegisterService);
 
   errorList: IError[] = [];
-  errorMessage: string = "";
+  errorMessage: string = '';
 
   isChecked: boolean = false;
 
-  adminValidator(): ValidatorFn 
-  {
+  adminValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const isValid = control.value === 0 || control.value === 4444;
-      return isValid? null:{adminValidator: true};
-    }
+      return isValid ? null : { adminValidator: true };
+    };
   }
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
@@ -42,36 +39,29 @@ export class CreateAccountComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {}
 
-  
-  async addUser(){
+  async addUser() {
     if (this.registerForm.valid) {
       const { username, email, password, adminCode } = this.registerForm.value;
 
-      const newUser: User = {
-        username, 
-        email, 
-        password, 
-        adminCode
+      const newUser: ICreateUser = {
+        username,
+        email,
+        password,
+        adminCode,
       };
- 
+
       try {
-        const response = await firstValueFrom(this.registerService.postUsers(newUser));
+        const response = await firstValueFrom(
+          this.registerService.postUsers(newUser)
+        );
         console.log('Post successful:', response);
-          this.router.navigate(['/user']);
-        
+        this.router.navigate(['/user']);
       } catch (error: any) {
         this.errorList = error.error;
         console.error('Post failed:', error.error);
-        
       }
     }
   }
-
-/*   adminFunction(ev: any) {
-    console.log(ev.target.checked);
-    this.isChecked = ev.target.checked;
-  } */
 }

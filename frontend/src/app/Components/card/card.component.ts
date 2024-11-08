@@ -1,7 +1,7 @@
 import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ITasks } from '../../core/models/TasksModel';
+import { ITasks } from '../../core/models/ITasks';
 import { ICard } from '../../core/models/ICard';
 import { TasksService } from '../../Services/CardTasks/tasks.service';
 import { firstValueFrom } from 'rxjs';

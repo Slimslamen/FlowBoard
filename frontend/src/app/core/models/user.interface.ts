@@ -1,4 +1,4 @@
-export interface User {
+export interface ICreateUser {
   username: string;
   email: string;
   password: string;
@@ -11,7 +11,7 @@ export interface ICurrentUser {
   adminRole?: string[];
 }
 
-export interface CurrentUser {
+export interface IAccessUser {
   id: string;
   username: string;
   roles?: string[];
