@@ -48,7 +48,6 @@ export class UserComponent implements OnInit {
       };
       this.LoginService.postLoginUser(newUser).subscribe(
         (response) => {
-          console.log('Post successfully:', response);
           this.BoardsService.setUserId(response.userId);
           if (response.roles == 'user')
             this.router.navigate(['/createBoard', response.userId]);
