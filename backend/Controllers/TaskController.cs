@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers;
 [ApiController]
 [Route("api/tasks")]
+[Consumes("application/json")]
+[Produces("application/json")]
 public class TaskController(ITaskService taskService) : ControllerBase
 {
     public readonly ITaskService _taskService = taskService;

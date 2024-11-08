@@ -10,6 +10,8 @@ namespace backend.Controllers;
 
 [ApiController]
 [Route("api/users")]
+[Consumes("application/json")]
+[Produces("application/json")]
 public class UserController(IUserService service) : ControllerBase
 {
     private readonly IUserService _service = service;
