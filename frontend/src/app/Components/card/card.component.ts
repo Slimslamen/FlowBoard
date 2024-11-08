@@ -127,20 +127,21 @@ export class CardComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<any>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+  drop(event: CdkDragDrop<any>, Card: ICard) {
+    console.log(event);
+    console.log(Card)
+    console.log(event.item.element.nativeElement.id)
+ 
+    const taskId = event.item.element.nativeElement.id;
+ 
+    let task = this.Tasks.find(task => task.id != null && task.id == +taskId);
+    console.log(task);
+    if (task != null && task.id != null) {
+      task.state = Card.state
+      this.TaskService.UpdateTaskState(task.id, task.state)
+        .subscribe(async () => {
+          await this.GetAllTasks()
+        })
+      }
     }
-  }
 }

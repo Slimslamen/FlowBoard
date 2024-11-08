@@ -1,3 +1,4 @@
+using AngleSharp.Io;
 using backend.DTO.TaskDTOs;
 using backend.Models;
 
@@ -10,4 +11,6 @@ public interface ITaskService
     Tasks CreateNewTask(TaskRequestDto tasksRequestDto);
 
     Tasks? DeleteTask(int id);
+
+    Tasks? ChangeStateOnTask(int id, string newState);
 }

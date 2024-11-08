@@ -31,4 +31,11 @@ public class TaskService(ITaskRepo taskRepo, IMapper mapper) : ITaskService
      var userTasks = _taskRepo.GetAllUserTasks(id);
         return _mapper.Map<List<TaskResponseDTO>>(userTasks);
     }
+
+public Tasks? ChangeStateOnTask(int id, string newState)
+{
+    return _taskRepo.ChangeStateOnTask(id, newState);
+}
+
+  
 }

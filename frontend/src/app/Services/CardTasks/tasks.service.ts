@@ -45,4 +45,11 @@ taskId?:number;
     }
     return this.http.delete("http://localhost:5228/api/tasks/id?id=" + taskId,{'headers':headers, withCredentials: true});
   }
+  UpdateTaskState(taskId: number, taskState: string): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({ State: taskState });
+
+    return this.http.patch(`http://localhost:5228/api/tasks/change-state/${taskId}`, body, {'headers':headers, withCredentials: true });
+}
+
 }

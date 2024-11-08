@@ -41,4 +41,19 @@ public class TaskRepo(FlowboardContext db) : ITaskRepo
            .Where(task => task.BoardId == boardId)
            .ToList();
     }
+
+
+public Tasks? ChangeStateOnTask(int id, string newState)
+{
+    // Hitta uppgiften med det angivna ID
+    var task = _db.Tasks.FirstOrDefault(t => t.Id == id);
+    if (task != null)
+    {
+        // Uppdatera status
+        task.State = newState;
+        _db.SaveChanges(); // Spara ändringarna till databasen
+    }
+    return task; // Returnera den uppdaterade uppgiften
+}
+
 }
