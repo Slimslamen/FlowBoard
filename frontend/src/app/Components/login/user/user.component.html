@@ -12,12 +12,15 @@
           placeholder="Username"
         />
       </div>
-      <div
-        *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+
+      @if(!loginForm.get('username')?.invalid && !loginForm.get('username')?.touched)
+      {
+        <div
         style="color: red; padding-top: 0.2rem;"
       >
         Please insert a valid username
       </div>
+      }
       <div class="mb-5 mt-5">
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password:</label>
         <input
