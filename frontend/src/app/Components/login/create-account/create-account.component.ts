@@ -42,6 +42,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {}
 
   async addUser() {
+
     if (this.registerForm.valid) {
       const { username, email, password, adminCode } = this.registerForm.value;
 
