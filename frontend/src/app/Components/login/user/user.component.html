@@ -13,7 +13,7 @@
         />
       </div>
 
-      @if(!loginForm.get('username')?.invalid && !loginForm.get('username')?.touched)
+      @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched)
       {
         <div
         style="color: red; padding-top: 0.2rem;"

@@ -6,6 +6,7 @@
   </h1>
   <div class="flex flex-row space-x-8 overflow-x-auto w-10/12 mx-auto">
     @for (user of Users; track $index) {
+      
     <div
       class="px-10 py-4 flex flex-row justify-center items-center my-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow"
     >
@@ -17,25 +18,25 @@
         />
         <h5 class="mb-1 text-xl font-medium text-gray-900">{{user.username}}</h5>
         <div class="flex mt-4 md:mt-6">
-            @if (ButtonIndex == $index) {
-                <button
-                    (click)="GoToUserBoard(user.id, $index)"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                    Close Board
-                </button>
-            } @else if (ButtonIndex != $index) {
-                <button
-                    (click)="GoToUserBoard(user.id, $index)"
-                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                    View Board
-                </button>
-            }
-          <a
+          <!-- ngClass, när toggle är aktiverad och buttonindex inte matchar den aktuella användares index 
+           blir knappen för de andra användarna inte tillåten och de blir genomskinliga, 
+           och annars är pekaren normal och går att klicka på vilken användare som helst -->
+            <button
+            (click)="GoToUserBoard(user.id, $index)"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg"
+          [disabled]="Toggle && ButtonIndex !== $index"
+          [ngClass]="{
+            'cursor-not-allowed opacity-50': Toggle && ButtonIndex !== $index,
+            'cursor-pointer': !Toggle || ButtonIndex === $index
+          }"
+          >
+          <!-- knappen som växlar mellan att visa och stänga boards -->
+            {{ Toggle && ButtonIndex === $index ? 'Close Board' : 'View Board' }}
+          </button>
+          <button
             (click)="DeleteUser(user.id)"
-            class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-            >Delete User</a
+            class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100"
+            >Delete User</button
           >
         </div>
       </div>

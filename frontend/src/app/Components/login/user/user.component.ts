@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required]],
     });
   }
