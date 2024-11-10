@@ -60,4 +60,5 @@ public class BoardController(IBoardService service) : ControllerBase
         }
         return board;
     }
+
 }
