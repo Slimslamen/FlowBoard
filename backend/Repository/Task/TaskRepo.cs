@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.DTO.TaskDTOs;
 using backend.Models;
 
 namespace backend.Repository.Task;
@@ -43,17 +44,14 @@ public class TaskRepo(FlowboardContext db) : ITaskRepo
     }
 
 
-public Tasks? ChangeStateOnTask(int id, string newState)
+public Tasks? ChangeStateOnTask(int id, UpdateTaskDto state)
 {
-    // Hitta uppgiften med det angivna ID
-    var task = _db.Tasks.FirstOrDefault(t => t.Id == id);
+
+    Tasks? task = _db.Tasks.Find(id);
     if (task != null)
-    {
-        // Uppdatera status
-        task.State = newState;
-        _db.SaveChanges(); // Spara ändringarna till databasen
-    }
-    return task; // Returnera den uppdaterade uppgiften
+    task.State = state.State;
+    _db.SaveChanges();
+    return task; 
 }
 
 }

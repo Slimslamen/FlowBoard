@@ -32,9 +32,9 @@ public class TaskService(ITaskRepo taskRepo, IMapper mapper) : ITaskService
         return _mapper.Map<List<TaskResponseDTO>>(userTasks);
     }
 
-public Tasks? ChangeStateOnTask(int id, string newState)
+public Tasks? ChangeStateOnTask(int id, UpdateTaskDto state)
 {
-    return _taskRepo.ChangeStateOnTask(id, newState);
+    return _taskRepo.ChangeStateOnTask(id, state);
 }
 
   

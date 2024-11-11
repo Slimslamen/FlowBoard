@@ -13,5 +13,5 @@ public interface ITaskRepo
 
     Tasks? DeleteTask(int id);
 
-    Tasks? ChangeStateOnTask(int id, string newState );
+    Tasks? ChangeStateOnTask(int id, UpdateTaskDto state );
 }

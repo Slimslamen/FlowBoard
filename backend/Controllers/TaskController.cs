@@ -49,17 +49,14 @@ public class TaskController(ITaskService taskService) : ControllerBase
         return _taskService.GetAllUserTasks(id);
     }
 [HttpPatch("change-state/{id}")]
-public ActionResult<TaskResponseDTO> ChangeTaskState(int id, [FromBody] TaskRequestDto request)
+public ActionResult<Tasks> ChangeTaskState([FromRoute]int id, UpdateTaskDto state)
 {
-    // Uppdatera uppgiftens status baserat på ID och den nya statusen
-    var updatedTask = _taskService.ChangeStateOnTask(id, request.State);
+  
+    Tasks? updatedTask = _taskService.ChangeStateOnTask(id, state);
     if (updatedTask == null)
     {
         return NotFound();
     }
-    // Returnera uppdaterad uppgift om ändringen lyckades
+
     return Ok(updatedTask);
-}
-
-
-}
+}}
