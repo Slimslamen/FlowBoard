@@ -9,5 +9,7 @@ public class TaskProfile : Profile{
     {
         CreateMap<TaskRequestDto, Tasks>();
         CreateMap<Tasks, TaskResponseDTO>();
+        CreateMap<Tasks, UpdateTaskDto>();
+        CreateMap<UpdateTaskDto, Tasks>();
     }
 }

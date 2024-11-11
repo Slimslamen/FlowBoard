@@ -1,3 +1,4 @@
+using backend.DTO.TaskDTOs;
 using backend.Models;
 
 namespace backend.Repository.Task;
@@ -11,4 +12,6 @@ public interface ITaskRepo
     Tasks CreateTask(Tasks tasks);
 
     Tasks? DeleteTask(int id);
+
+    Tasks? ChangeStateOnTask(int id, UpdateTaskDto state );
 }

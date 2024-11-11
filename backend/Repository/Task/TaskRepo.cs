@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.DTO.TaskDTOs;
 using backend.Models;
 
 namespace backend.Repository.Task;
@@ -41,4 +42,16 @@ public class TaskRepo(FlowboardContext db) : ITaskRepo
            .Where(task => task.BoardId == boardId)
            .ToList();
     }
+
+
+public Tasks? ChangeStateOnTask(int id, UpdateTaskDto state)
+{
+
+    Tasks? task = _db.Tasks.Find(id);
+    if (task != null)
+    task.State = state.State;
+    _db.SaveChanges();
+    return task; 
+}
+
 }

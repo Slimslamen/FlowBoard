@@ -48,4 +48,15 @@ public class TaskController(ITaskService taskService) : ControllerBase
     {
         return _taskService.GetAllUserTasks(id);
     }
-}
+[HttpPatch("change-state/{id}")]
+public ActionResult<Tasks> ChangeTaskState([FromRoute]int id, UpdateTaskDto state)
+{
+  
+    Tasks? updatedTask = _taskService.ChangeStateOnTask(id, state);
+    if (updatedTask == null)
+    {
+        return NotFound();
+    }
+
+    return Ok(updatedTask);
+}}
