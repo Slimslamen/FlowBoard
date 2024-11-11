@@ -6,7 +6,7 @@ using backend.Repository.Boards;
 using Microsoft.AspNetCore.Identity;
 
 namespace backend.Services.BoardFolder;
-
+//Servicen har hand om kopplingen till repot. Här hanterar vi även mappning alt vad vi ska hämta i repot
 public class BoardService(IBoardRepo repo, IMapper mapper) : IBoardService
 {
     private readonly IBoardRepo _repo = repo;
@@ -29,8 +29,6 @@ public class BoardService(IBoardRepo repo, IMapper mapper) : IBoardService
     {
         return _repo.DeleteOneBoard(id);
     }
-
-
 
     public List<BoardResponseDTO> GetAllUserBoards(string userId)
     {

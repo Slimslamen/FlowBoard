@@ -14,6 +14,8 @@ public class BoardController(IBoardService service) : ControllerBase
 {
     public readonly IBoardService _service = service;
 
+
+//För att hämta alla Boards så måste man ha rollen admin 
     [HttpGet("GetAllBoards")]
     [Authorize(Roles = "admin")]
     public ActionResult<List<Board>> GetBoards()
@@ -40,13 +42,13 @@ public class BoardController(IBoardService service) : ControllerBase
         }
 
         return NoContent();
-
     }
+
+    //I Program så har vi satt en policy för vem som kommer åt userBoards 
     [HttpGet]
     [Authorize(Policy = "UserParam")]
      public ActionResult<List<BoardResponseDTO>> GetUserBoards([FromQuery] string userId)
     {
-
         return _service.GetAllUserBoards(userId);
     }
 

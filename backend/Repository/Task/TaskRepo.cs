@@ -3,7 +3,7 @@ using backend.DTO.TaskDTOs;
 using backend.Models;
 
 namespace backend.Repository.Task;
-
+//Repot har hand om kopplingen till databasen
 public class TaskRepo(FlowboardContext db) : ITaskRepo
 {
     private readonly FlowboardContext _db = db;

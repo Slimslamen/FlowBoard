@@ -48,6 +48,7 @@ ngOnInit(): void {
       },
       (error) => {
         console.log('Not working');
-      });}
+      });
+    }
 
 }

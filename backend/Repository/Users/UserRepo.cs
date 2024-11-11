@@ -2,7 +2,7 @@ using backend.Data;
 using backend.Models;
 
 namespace backend.Repository.Users;
-
+//Repot har hand om kopplingen till databasen
 public class UserRepo(FlowboardContext db) : IUserRepo
 {
 

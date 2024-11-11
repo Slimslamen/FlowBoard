@@ -5,7 +5,7 @@ using backend.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 namespace backend.Repository.Boards;
 
-
+//Repot har hand om kopplingen till databasen
 public class BoardRepo(FlowboardContext db) : IBoardRepo
 {
     private readonly FlowboardContext _db = db;
@@ -24,7 +24,6 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
         .ToList();
     }
 
-
     public Board? DeleteOneBoard(int id)
     {
         Board? board = _db.Boards.Find(id);
@@ -37,9 +36,7 @@ public class BoardRepo(FlowboardContext db) : IBoardRepo
         } else 
         {
             return null;
-        }
-
-    }
+        }}
 
     public List<Board> GetAllUserBoard(string userId)
     {

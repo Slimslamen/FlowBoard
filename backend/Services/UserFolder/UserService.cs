@@ -5,7 +5,7 @@ using backend.Models;
 using backend.Repository.Users;
 
 namespace backend.Services.UserFolder;
-
+//Servicen har hand om kopplingen till repot. Här hanterar vi även mappning alt vad vi ska hämta i repot
 public class UserService(IUserRepo repo, IMapper mapper) : IUserService
 {
     private readonly IUserRepo _repo = repo;

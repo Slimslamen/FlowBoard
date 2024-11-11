@@ -4,7 +4,7 @@ using backend.Models;
 using backend.Repository.Task;
 
 namespace backend.Services.TaskFolder;
-
+//Servicen har hand om kopplingen till repot. Här hanterar vi även mappning alt vad vi ska hämta i repot
 public class TaskService(ITaskRepo taskRepo, IMapper mapper) : ITaskService
 {
     public readonly ITaskRepo _taskRepo = taskRepo;
