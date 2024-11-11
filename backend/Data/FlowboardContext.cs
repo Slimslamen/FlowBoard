@@ -19,12 +19,9 @@ public class FlowboardContext : IdentityDbContext<User>
         var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING", EnvironmentVariableTarget.User);
         if (!option.IsConfigured)
         {
-
             option.UseNpgsql(connectionString,
             options => options.EnableRetryOnFailure());
-
-        }
-    }
+        }}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
