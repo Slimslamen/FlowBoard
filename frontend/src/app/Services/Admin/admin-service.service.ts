@@ -18,8 +18,7 @@ export class AdminServiceService {
     return this.http.get<IBoards[]>("http://localhost:5228/api/users/GetUserBoard?id="+id, {withCredentials:true})
   }
   DeleteUserForAdmin(userId:string):Observable<IAccessUser>{
-    const headers={'content-type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
+    const headers={'content-type': 'application/json'
     }
     return this.http.delete<IAccessUser>("http://localhost:5228/api/users/DeleteUser?userId="+ userId,{'headers':headers, withCredentials: true})
   }
