@@ -47,8 +47,7 @@ import { IOneBoard } from '../../core/models/IOneBoard';
     return this.http.post("http://localhost:5228/api/boards/PostBoard", body,{'headers':headers, withCredentials: true});
   }
   DeleteBoard = (BoardId:number):Observable<any> => {
-    const headers={'content-type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
+    const headers={'content-type': 'application/json'
     }
     return this.http.delete("http://localhost:5228/api/boards/DeleteBoard?id=" + BoardId,{'headers':headers, withCredentials: true});
   }

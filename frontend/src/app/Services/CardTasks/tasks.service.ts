@@ -40,8 +40,7 @@ taskId?:number;
   }
 
   DeleteTask = (taskId:number):Observable<any> => {
-    const headers={'content-type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, DELETE'
+    const headers={'content-type': 'application/json'
     }
     return this.http.delete("http://localhost:5228/api/tasks/id?id=" + taskId,{'headers':headers, withCredentials: true});
   }
