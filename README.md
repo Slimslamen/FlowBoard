@@ -1,4 +1,4 @@
-#Flowboard 🧩
+# Flowboard 🧩
 A simple and intuitive task board for better workflow management
 
 Flowboard is a clean and minimalistic task board designed to help individuals and teams organize their tasks efficiently. With a drag-and-drop interface and clear column structure, Flowboard makes it easy to visualize progress, stay focused, and boost productivity.
